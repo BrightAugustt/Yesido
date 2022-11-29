@@ -43,7 +43,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="admin.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
@@ -274,7 +274,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="admin.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -286,17 +286,17 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="weddings.html">
+            <a href="weddings.php">
               <i class="bi bi-circle"></i><span>Add Wedding</span>
             </a>
           </li>
           <li>
-            <a href="Product-shoots.html">
+            <a href="shoots.php">
               <i class="bi bi-circle"></i><span>Add Product Shoots</span>
             </a>
           </li>
           <li>
-            <a href="awards.html">
+            <a href="awards.php">
               <i class="bi bi-circle"></i><span>Add Award Ceremonies</span>
             </a>
           </li>
@@ -310,17 +310,17 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="view_weddings.html">
+            <a href="view_weddings.php">
               <i class="bi bi-circle"></i><span>Weddings</span>
             </a>
           </li>
           <li>
-            <a href="view_products.html">
+            <a href="view_products.php">
               <i class="bi bi-circle"></i><span>Product Shoots</span>
             </a>
           </li>
           <li>
-            <a href="view_awards.html">
+            <a href="view_awards.php">
               <i class="bi bi-circle"></i><span>Award Ceremonies</span>
             </a>
           </li>
@@ -363,7 +363,7 @@
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
