@@ -389,7 +389,12 @@
 
               <div class="form-group">
                 <label for="wedding_img">Image</label>
-                <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Image" required name="wedding_key">
+                <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Image" required name="wedding_img" style="width: 3400px; height: 90px;" >
+              </div>
+
+              <div class="form-group">
+                <label for="wedding_key">Key</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="key" required name="wedding_key">
               </div>
 
                 <!-- <div class="row mb-3">
