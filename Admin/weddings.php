@@ -370,7 +370,7 @@
               <h5 class="card-title">Add Wedding </h5>
 
               <!-- General Form Elements -->
-              <form method="$_POST" action="../actions/addwedding.php">
+              <form method="POST" action="../actions/addwedding.php">
 
               <div class="form-group">
                 <label for="wedding_name">Name</label>

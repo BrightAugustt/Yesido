@@ -371,7 +371,7 @@
               <h5 class="card-title">Add Shoot Forms</h5>
 
               <!-- General Form Elements -->
-              <form method="$_POST" action="../actions/addshoots.php">
+              <form method="POST" action="../actions/addshoots.php">
 
               <div class="form-group">
                 <label for="shoot_name">Name</label>
@@ -379,17 +379,17 @@
               </div>
 
               <div class="form-group">
-                <label for="wedding_price">Price</label>
+                <label for="shoot_price">Price</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Price" name="shoot_price" required>
               </div>
 
               <div class="form-group">
-                <label for="wedding_label">Description</label>
+                <label for="shoot_label">Description</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Description" name="shoot_label" required>
               </div>
 
               <div class="form-group">
-                <label for="wedding_img">Keyword</label>
+                <label for="shoot_img">Keyword</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="key" name="shoot_key" required>
               </div>
 
