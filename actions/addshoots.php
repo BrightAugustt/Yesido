@@ -14,7 +14,7 @@ if(isset($_POST["addshoots"])){
     $result=addShoot_ctr($shoot_name,$shoot_price,$shoot_label,$shoot_key);
 
     if($result==true){
-        header('Location:../Admin/view_shoots.php');
+        header('Location:../Admin/view_products.php');
     }
 }
 
