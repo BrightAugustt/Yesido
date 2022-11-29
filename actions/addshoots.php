@@ -19,6 +19,9 @@ echo $shoot_key;
     if($result==true){
         header('Location:../Admin/view_products.php');
     }
+
+}else{
+    echo"Something went wrong";
 }
 
 
