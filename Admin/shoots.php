@@ -389,7 +389,7 @@
               </div>
 
               <div class="form-group">
-                <label for="shoot_img">Keyword</label>
+                <label for="shoot_key">Keyword</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="key" name="shoot_key" required>
               </div>
 
