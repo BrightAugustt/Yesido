@@ -14,11 +14,11 @@ echo $shoot_label;
 echo $shoot_key;
 
 // Controller
-    $result=addShoot_ctr($shoot_name,$shoot_price,$shoot_label,$shoot_key);
+$result=addShoot_ctr($shoot_name,$shoot_price,$shoot_label,$shoot_key);
 
-    if($result==true){
-        header('Location:../Admin/view_products.php');
-    }
+if($result == true){
+    header('Location:../Admin/view_products.php');
+}
 
 }else{
     echo"Something went wrong";
