@@ -1,8 +1,9 @@
 <?php
 //Database credentials
 Define('SERVER', 'us-cdbr-east-06.cleardb.net');
-Define('USERNAME', 'b8381e8687357a');
-Define('PASSWORD', '246b0cb1');
-Define('DATABASE', 'heroku_c41210addaccbb7');
+Define('USERNAME', 'ba2cace98fada6');
+Define('PASSWORD', '77de0ca9');
+Define('DATABASE', 'heroku_2b7595b90a7497b');
+
 
 ?>
