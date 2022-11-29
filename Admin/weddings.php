@@ -269,7 +269,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.php">
+        <a class="nav-link collapsed" href="admin.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -355,8 +355,8 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Elements</li>
+          <li class="breadcrumb-item">Manage Services</li>
+          <li class="breadcrumb-item active">Weddings</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -367,41 +367,34 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Add Category Forms</h5>
+              <h5 class="card-title">Add Wedding </h5>
 
               <!-- General Form Elements -->
-              <form>
-                <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Text</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control">
-                  </div>
-                </div>
-               
-                <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
-                  <div class="col-sm-10">
-                    <input class="form-control" type="file" id="formFile">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputPassword" class="col-sm-2 col-form-label">Text</label>
-                  <div class="col-sm-10">
-                    <textarea class="form-control" style="height: 100px"></textarea>
-                  </div>
-                </div>
-                  </div>
-                </div>
+              <form method="$_POST" action="../actions/addwedding.php">
+
+              <div class="form-group">
+                <label for="wedding_name">Name</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Type of wedding" name="wedding_name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="wedding_price">Price</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Price" name="wedding_price" required>
+              </div>
+
+              <div class="form-group">
+                <label for="wedding_label">Description</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Description" name="wedding_label" required>
+              </div>
+
+              <div class="form-group">
+                <label for="wedding_img">Image</label>
+                <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Image" required name="wedding_key">
+              </div>
 
                 <!-- <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Submit Button</label> -->
-                  <div class="col-sm-10">
+                  <div class="col-sm-10" style="margin-top: 15px;">
                     <button type="submit" class="btn btn-primary">Submit Form</button>
                   </div>
                 </div>
