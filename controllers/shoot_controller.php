@@ -8,9 +8,9 @@ include("../classes/shoot_class.php");
 function addShoot_ctr($shoot_name,$shoot_price,$shoot_label,$shoot_key){
 
     // Create an instance of the class
-    $add_customer = new shoot_class();
+    $add_shoot = new shoot_class();
 
-     return $add_customer->add_shoot($shoot_name,$shoot_price,$shoot_label,$shoot_key);
+     return $add_shoot->add_shoot($shoot_name,$shoot_price,$shoot_label,$shoot_key);
 
 }
 //--update--//

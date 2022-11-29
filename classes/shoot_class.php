@@ -16,7 +16,7 @@ class shoot_class extends db_connection
 	public function add_shoot($shoot_name,$shoot_price,$shoot_label,$shoot_key){
 
 		// Write query
-		$sql = "INSERT INTO `shoots`(`shoot_name`, `shoot_price`, `shoot_label`, `shoot_key`) VALUES ('$shoot_name','$shoot_price','$shoot_label','$shoot_key')";
+		$sql = "INSERT INTO `shoots`(`shoot_name`,`shoot_price`,`shoot_label`,`shoot_key`) VALUES ('$shoot_name','$shoot_price','$shoot_label','$shoot_key')";
 		// Return  
 		return $this -> db_query($sql);
 
