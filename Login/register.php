@@ -71,12 +71,6 @@
                     </div>
 
                     <div class="col-12">
-                      <label for="customer_number" class="form-label">Phone Number</label>
-                      <input type="tel" name="ccontact" class="form-control" id="ccontact" required>
-                      <div class="invalid-feedback">Please, enter your phone number!</div>
-                    </div>
-
-                    <div class="col-12">
                       <label for="yourEmail" class="form-label">Your Email</label>
                       <input type="email" name="cemail" class="form-control" id="cemail" required>
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
@@ -84,7 +78,7 @@
 
                     <div class="col-12">
                       <label for="Password" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="cpass" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
@@ -95,13 +89,25 @@
                     </div>
 
                     <div class="col-12">
+                      <label for="country" class="form-label">Your country</label>
+                      <input type="text" name="ccountry" class="form-control" id="ccountry" required>
+                      <div class="invalid-feedback">Please, enter your name!</div>
+                    </div>
+
+                    <div class="col-12">
                       <label for="city" class="form-label">City</label>
                       <input type="text" name="ccity" class="form-control" id="ccity" required>
                       <div class="invalid-feedback">Please, enter your prefered city!</div>
                     </div>
 
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit" name="addcustomer">Create Account</button>
+                      <label for="customer_number" class="form-label">Phone Number</label>
+                      <input type="tel" name="ccontact" class="form-control" id="ccontact" required>
+                      <div class="invalid-feedback">Please, enter your phone number!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit" name="register">Create Account</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="login.php">Log in</a></p>
