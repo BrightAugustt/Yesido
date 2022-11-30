@@ -72,7 +72,7 @@
 
                     <div class="col-12">
                       <label for="Password" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="cpass" class="form-control" id="cpass" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
