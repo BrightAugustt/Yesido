@@ -83,6 +83,18 @@
                       <p class="small mb-0">Don't have an account? <a href="register.php">Log in</a></p>
                     </div>
                   </form>
+                  <?php
+                    session_start();
+                    if(!empty($_SESSION['error'])){
+                    ?>
+                    <div style = "color : red; font-weight:600;">
+                    <?php
+                        echo $_SESSION['error'];
+                        
+                        unset($_SESSION['error']); 
+                    } 
+                    ?>
+                    </div>
 
                 </div>
               </div>

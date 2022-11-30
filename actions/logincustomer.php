@@ -43,13 +43,13 @@ if(isset($_POST["login"])){
             else{
                 session_start();
 $_SESSION['error']='Invalid credentials';
-                header('Location:login.php');
+                header('Location:../Login/login.php');
             }
                     }
                     else{
                         session_start();
 $_SESSION['error']='Invalid credentials';
-                        header('Location:login.php');
+                        header('Location:../Login/login.php');
                     }
         
 

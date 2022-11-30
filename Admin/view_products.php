@@ -384,59 +384,58 @@
       <div class="row">
         <div class="col-lg-6">
 
-          <div class="card">
-            <div class="card-body">
+          <div class="card" style="width: 100%;">
+            <div class="card-body" style="max-width: 100%;">
               <h5 class="card-title">Default Table</h5>
 
               <!-- Default Table -->
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
+                
+                    <th scope="col">Shoot Name</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Cost</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Keyword</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
+                  <!-- Shoot display -->
+                    <?php
+                      function displayproductCtr(){
+                        $shoot = selectall_shoot_ctr();
+                        for ($i=0; $i < count($shoot); $i++){
+                          echo "<tr>";
+                          echo "<td>".$shoot[$i]['shoot_name']."<td>";
+                          echo "<td>".$shoot[$i]['shoot_price']."<td>";
+                          echo "<td>".$shoot[$i]['shoot_label']."<td>";
+                          echo "<td>".$shoot[$i]['shoot_key']."<td>";
+                          // Edit & Delete form 
+                          echo "<th><form action='updateshoots.php'  method='POST'>
+                          <input type = 'submit' value='update' name='updateshoot'>
+                          <input type='hidden' name='shoot_id' value='".$shoot[$i]['shoot_id']. "'></form><th>";
+                          echo "<th><form action='delete_shoot.php'  method='POST'>
+                          <input type = 'submit' value='delete' name='delete'>
+                          <input type='hidden' name='shoot_id' value='".$shoot[$i]['shoot_id']. "'></form><th>";
+                        }
+
+                      }
+                      displayproductCtr();                    
+                    ?>
+
+
+                  <!-- <tr>
+                 
                     <td>Brandon Jacob</td>
                     <td>Designer</td>
                     <td>28</td>
                     <td>2016-05-25</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                  </tr>
+                    <td>28</td>
+                    <td>2016-05-25</td>
+                  </tr> -->
+                 
                 </tbody>
               </table>
               <!-- End Default Table Example -->
