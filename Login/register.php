@@ -63,7 +63,7 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" novalidate method="POST" action="../actions/registercustomer.php">
                     <div class="col-12">
                       <label for="fullname" class="form-label">Full Name</label>
                       <input type="text" name="cname" class="form-control" id="cname" required>
