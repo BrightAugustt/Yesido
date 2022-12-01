@@ -394,7 +394,8 @@ include("../controllers/shoot_controller.php");
           <li class="breadcrumb-item active">Shoots</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
 
   
 

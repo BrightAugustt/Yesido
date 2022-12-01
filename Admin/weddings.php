@@ -370,7 +370,7 @@
               <h5 class="card-title">Add Wedding </h5>
 
               <!-- General Form Elements -->
-              <form method="POST" action="../actions/addwedding.php">
+              <form method="POST" action="../actions/addwedding.php" enctype="multipart/form-data">
 
               <div class="form-group">
                 <label for="wedding_name">Name</label>
@@ -389,7 +389,7 @@
 
               <div class="form-group">
                 <label for="wedding_img">Image</label>
-                <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Image" required name="wedding_img">
+                <input type="file" class="form-control" name="wedding_img[]" id="exampleFormControlInput1" required accept="image/*"  >
               </div>
 
               <div class="form-group">
@@ -400,7 +400,7 @@
                 <!-- <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">Submit Button</label> -->
                   <div class="col-sm-10" style="margin-top: 15px;">
-                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                    <button type="submit" class="btn btn-primary" name="addwedding">Submit Form</button>
                   </div>
                 </div>
 

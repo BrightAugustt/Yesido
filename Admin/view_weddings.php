@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and empty($_SESSION['user_role']!= 1) )
+   {
+      header('Location:../Login/login.php');
+   };
+include("../controllers/wedding_controller.php");
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -359,115 +370,131 @@
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>General Tables</h1>
+  <div class="pagetitle">
+      <h1>Shoot Tables</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">General</li>
+          <li class="breadcrumb-item">Services</li>
+          <li class="breadcrumb-item active">Weddings</li>
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
+    <table class="table table-striped">
+         <thead>
+              <tr>
+                <th scope="col">Wedding Name</th>
+                <th scope="col"></th>
+                <th scope="col">Price</th>
+                <th scope="col"></th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+                <th scope="col">Image</th>
+                
+                <th scope="col">Keyword</th>
+                <th scope="col"></th>
+                <th scope="col">Edit</th>
+                <th scope="col"></th>
+                <th scope="col">Delete</th>
+              </tr>
+        </thead>
+        <tbody>
+                  <!-- Shoot display -->
+                    <?php
+                      function displayproductCtr(){
+                        $wedding = selectall_wedding_ctr();
+                        
+                        for ($i=0; $i < count($wedding); $i++){
+                          echo "<tr>";
+                          echo "<td>".$wedding[$i]['wedding_name']."<td>";
+                          echo "<td>".$wedding[$i]['wedding_price']."<td>";
+                          echo "<td>".$wedding[$i]['wedding_label']."<td>";
+                          echo "<td><img src='../images/wedding/"  . $wedding[$i]['wedding_img']  . "' height='100px'></td>";
+                          echo "<td>".$wedding[$i]['wedding_key']."<td>";
 
-    <section class="section" style="justify-content:center">
-      <div class="row">
-        <div class="col-lg-6">
+                          // Edit & Delete form 
+                          echo "<th><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
+                          Update
+                        </button><th>";
+                          echo "<th><form action='../actions/deleteshoots.php'  method='POST'>
+                          <input type = 'submit' value='delete' name='delete' class='btn btn-outline-danger'>
+                          <input type='hidden' name='wedding_id' value='".$wedding[$i]['wedding_id']. "'></form><th>";
+                          
+                          echo "<tr>";
+                         echo 
+                         "<div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                         <div class='modal-dialog' role='document'>
+                           <div class='modal-content'>
+                             <div class='modal-header'>
+                               <h5 class='modal-title' id='exampleModalLabel'>Shoot Edit</h5>
+                               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                 <span aria-hidden='true'>&times;</span>
+                               </button>
+                             </div>
+                             <div class='modal-body'>
+                               <form action='../actions/updateshoots.php' method='POST'>
+                                  <div class='formgroup'>
+                                     <input type='hidden' name='wedding_id' value= '".$wedding[$i]['wedding_id']."'>
+                                 </div>
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Name:</label>
+                                   <input type='text' class='form-control' id='shoot_name' name='shoot_name' required placeholder= '".$wedding[$i]['wedding_name']."'>
+                                   <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
+                                 </div>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Default Table</h5>
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Price:</label>
+                                   <input type='text' class='form-control' id='shoot_price' name='shoot_price' required placeholder= '".$wedding[$i]['wedding_price']."'>
+                                   <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
+                                 </div>
 
-              <!-- Default Table -->
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Cost</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                  </tr>
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Label:</label>
+                                   <input type='text' class='form-control' id='shoot_label' name='shoot_label' required placeholder= '".$wedding[$i]['wedding_label']."'>
+                                   <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
+                                 </div>
+
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Key:</label>
+                                   <input type='text' class='form-control' id='shoot_key' name='shoot_key'  required placeholder= '".$wedding[$i]['wedding_key']."'>
+                                   <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
+                                 </div>
+
+                                 <div class='modal-footer'>
+                                 <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
+                                 <input type = 'submit' value='update' name='updateshoot' class='btn btn-primary''>
+                                 <input type='hidden' name='wedding_id' value='".$wedding[$i]['wedding_id']."'>
+                               </div>
+                               </form>
+                          
+                         <?php
+                            }
+                            displayproductCtr();
+                        ?>
+                       
+                       </div>";
+
+                        }
+
+                                          
+                    ?>
                 </tbody>
-              </table>
-              <!-- End Default Table Example -->
-            </div>
-          </div>
+
+</table>
+
 
           
-            </div>
-          </div>
+          <?php
+            }
+            displayproductCtr();
+          ?>
 
-         
-              <!-- End Tables without borders -->
-
-            </div>
-          </div>
-
-
-            </div>
-          </div>
-
-        </div>
-
-        
-              <!-- End Table with stripped rows -->
-
-            </div>
-          </div>
-
-          
-
-            </div>
-          </div>
-
-              <!-- End small tables -->
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
+<script>
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+    
 
   </main><!-- End #main -->
 
