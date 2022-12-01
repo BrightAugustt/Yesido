@@ -390,7 +390,6 @@ include("../controllers/wedding_controller.php");
                 <th scope="col">Description</th>
                 <th scope="col"></th>
                 <th scope="col">Image</th>
-                
                 <th scope="col">Keyword</th>
                 <th scope="col"></th>
                 <th scope="col">Edit</th>
@@ -416,7 +415,7 @@ include("../controllers/wedding_controller.php");
                           echo "<th><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
                           Update
                         </button><th>";
-                          echo "<th><form action='../actions/deleteshoots.php'  method='POST'>
+                          echo "<th><form action='../actions/deletewedding.php'  method='POST'>
                           <input type = 'submit' value='delete' name='delete' class='btn btn-outline-danger'>
                           <input type='hidden' name='wedding_id' value='".$wedding[$i]['wedding_id']. "'></form><th>";
                           
@@ -432,37 +431,43 @@ include("../controllers/wedding_controller.php");
                                </button>
                              </div>
                              <div class='modal-body'>
-                               <form action='../actions/updateshoots.php' method='POST'>
+                               <form action='../actions/updatewedding.php' method='POST'>
                                   <div class='formgroup'>
                                      <input type='hidden' name='wedding_id' value= '".$wedding[$i]['wedding_id']."'>
                                  </div>
                                  <div class='form-group'>
-                                   <label for='recipient-name' class='col-form-label'>Shoot Name:</label>
-                                   <input type='text' class='form-control' id='shoot_name' name='shoot_name' required placeholder= '".$wedding[$i]['wedding_name']."'>
+                                   <label for='recipient-name' class='col-form-label'>Wedding Name:</label>
+                                   <input type='text' class='form-control' id='wedding_name' name='wedding_name' required placeholder= '".$wedding[$i]['wedding_name']."'>
                                    <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
                                  </div>
 
                                  <div class='form-group'>
-                                   <label for='recipient-name' class='col-form-label'>Shoot Price:</label>
-                                   <input type='text' class='form-control' id='shoot_price' name='shoot_price' required placeholder= '".$wedding[$i]['wedding_price']."'>
+                                   <label for='recipient-name' class='col-form-label'>Wedding Price:</label>
+                                   <input type='text' class='form-control' id='wedding_price' name='wedding_price' required placeholder= '".$wedding[$i]['wedding_price']."'>
                                    <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
                                  </div>
 
                                  <div class='form-group'>
-                                   <label for='recipient-name' class='col-form-label'>Shoot Label:</label>
-                                   <input type='text' class='form-control' id='shoot_label' name='shoot_label' required placeholder= '".$wedding[$i]['wedding_label']."'>
+                                   <label for='recipient-name' class='col-form-label'>Wedding Label:</label>
+                                   <input type='text' class='form-control' id='wedding_label' name='wedding_label' required placeholder= '".$wedding[$i]['wedding_label']."'>
+                                   <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
+                                 </div>
+
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Wedding Image:</label>
+                                   <input type='file' class='form-control' id='wedding_img' name='wedding_img'  required placeholder= '".$wedding[$i]['wedding_img']."'>
                                    <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
                                  </div>
 
                                  <div class='form-group'>
                                    <label for='recipient-name' class='col-form-label'>Shoot Key:</label>
-                                   <input type='text' class='form-control' id='shoot_key' name='shoot_key'  required placeholder= '".$wedding[$i]['wedding_key']."'>
+                                   <input type='text' class='form-control' id='wedding_key' name='wedding_key'  required placeholder= '".$wedding[$i]['wedding_key']."'>
                                    <input type='hidden' name='wedding_id'  value= '".$wedding[$i]['wedding_id']."'>
                                  </div>
 
                                  <div class='modal-footer'>
                                  <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
-                                 <input type = 'submit' value='update' name='updateshoot' class='btn btn-primary''>
+                                 <input type = 'submit' value='update' name='updatewedding' class='btn btn-primary''>
                                  <input type='hidden' name='wedding_id' value='".$wedding[$i]['wedding_id']."'>
                                </div>
                                </form>
