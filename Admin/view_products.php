@@ -428,8 +428,8 @@ include("../controllers/shoot_controller.php");
                           echo "<td>".$shoot[$i]['shoot_key']."<td>";
 
                           // Edit & Delete form 
-                          echo "<th><form action='updateshoots.php'  method='POST'>
-                          <input type = 'submit' value='update' name='updateshoot' class='btn btn-primary bi bi-pen' data-toggle='modal'>
+                          echo "<th><form action='../actions/updateshoots.php'  method='POST'>
+                          <input type = 'submit' value='update' name='updateshoot' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
                           <input type='hidden' name='shoot_id' value='".$shoot[$i]['shoot_id']. "'></form><th>";
                           echo "<th><form action='delete_shoot.php'  method='POST'>
                           <input type = 'submit' value='delete' name='delete' class='btn btn-outline-danger'>
@@ -467,13 +467,13 @@ include("../controllers/shoot_controller.php");
 
                                  <div class='form-group'>
                                    <label for='recipient-name' class='col-form-label'>Shoot Label:</label>
-                                   <input type='text' class='form-control' id='shoot_label' plcaeholder= '".$shoot[$i]['shoot_label']."'>
+                                   <input type='text' class='form-control' id='shoot_label' placeholder= '".$shoot[$i]['shoot_label']."'>
                                    <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
                                  </div>
 
                                  <div class='form-group'>
-                                   <label for='recipient-name' class='col-form-label'>Shoot Label:</label>
-                                   <input type='text' class='form-control' id='shoot_key' plcaeholder= '".$shoot[$i]['shoot_key']."'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Key:</label>
+                                   <input type='text' class='form-control' id='shoot_key' placeholder= '".$shoot[$i]['shoot_key']."'>
                                    <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
                                  </div>
                                  <?php
@@ -484,7 +484,7 @@ include("../controllers/shoot_controller.php");
                              </div>
                              <div class='modal-footer'>
                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
-                               <button type='button' class='btn btn-primary' name=''>Save Changes</button>
+                               <button type='button' class='btn btn-primary' name='updateshoot'>Save Changes</button>
                              </div>
                            </div>
                          </div>
