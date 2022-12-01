@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and empty($_SESSION['user_role']!= 1) )
+   {
+      header('Location:../Login/login.php');
+   };
+include("../controllers/shoot_controller.php");
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +28,10 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -370,104 +386,119 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>General Tables</h1>
+      <h1>Shoot Tables</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">General</li>
+          <li class="breadcrumb-item">Services</li>
+          <li class="breadcrumb-item active">Shoots</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section" style="justify-content:center">
-      <div class="row">
-        <div class="col-lg-6">
+  
 
-          <div class="card" style="width: 100%;">
-            <div class="card-body" style="max-width: 100%;">
-              <h5 class="card-title">Default Table</h5>
-
-              <!-- Default Table -->
-              <table class="table">
-                <thead>
-                  <tr>
-                
-                    <th scope="col">Shoot Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Keyword</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
+          <table class="table table-striped">
+         <thead>
+              <tr>
+                <th scope="col">Shoot Name</th>
+                <th scope="col"></th>
+                <th scope="col">Price</th>
+                <th scope="col"></th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+                <th scope="col">Edit</th>
+                <th scope="col"></th>
+                <th scope="col">Delete</th>
+              </tr>
+        </thead>
+        <tbody>
                   <!-- Shoot display -->
                     <?php
                       function displayproductCtr(){
                         $shoot = selectall_shoot_ctr();
+                        
                         for ($i=0; $i < count($shoot); $i++){
                           echo "<tr>";
                           echo "<td>".$shoot[$i]['shoot_name']."<td>";
                           echo "<td>".$shoot[$i]['shoot_price']."<td>";
                           echo "<td>".$shoot[$i]['shoot_label']."<td>";
-                          echo "<td>".$shoot[$i]['shoot_key']."<td>";
+
                           // Edit & Delete form 
                           echo "<th><form action='updateshoots.php'  method='POST'>
-                          <input type = 'submit' value='update' name='updateshoot'>
+                          <input type = 'submit' value='update' name='updateshoot' class='btn btn-primary bi bi-pen' data-toggle='modal'>
                           <input type='hidden' name='shoot_id' value='".$shoot[$i]['shoot_id']. "'></form><th>";
                           echo "<th><form action='delete_shoot.php'  method='POST'>
-                          <input type = 'submit' value='delete' name='delete'>
+                          <input type = 'submit' value='delete' name='delete' class='btn btn-outline-danger'>
                           <input type='hidden' name='shoot_id' value='".$shoot[$i]['shoot_id']. "'></form><th>";
+                          echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
+                          edit
+                        </button>";
+                          echo "<tr>";
+                         
                         }
 
-                      }
-                      displayproductCtr();                    
+                                          
                     ?>
-
-
-                  <!-- <tr>
-                 
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                  </tr> -->
-                 
                 </tbody>
-              </table>
-              <!-- End Default Table Example -->
-            </div>
-          </div>
-            </div>
-          </div>
 
-            </div>
-          </div>
-            </div>
-          </div>
+</table>
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
 
+<!-- Modal -->
 
-            </div>
-          </div>
-
-        </div>
-
-            </div>
-          </div>
-              <!-- End Table with hoverable rows -->
-
-            </div>
-          </div>
-
-            </div>
-          </div>
-
-        </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Shoot Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </section>
+      <div class="modal-body">
+        <form action="../actions/updateshoots.php" method="POST">
+        <?php 
+           $shoot_id = $_POST['shoot_id'];
+           $shoot=selectoneshoot_ctr($shoot_id);
+          
+        ?>
+           <div class="formgroup">
+              <input type="hidden" name="shoot_id" value=" <?php echo $shoot['shoot_id']?> ">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Shoot Name:</label>
+            <input type="text" class="form-control" id="shoot_id" value="<?php echo $shoot['shoot_name']?>">
+            <input type="hidden" name="cat_id" value=" <?php  echo $shoot['shoot_name']; ?> ">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+          <?php
+            }
+            displayproductCtr();
+          ?>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+
 
   </main><!-- End #main -->
 

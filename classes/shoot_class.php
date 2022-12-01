@@ -38,7 +38,7 @@ class shoot_class extends db_connection
 		// Write query
 		$sql =  "SELECT * FROM `shoots` WHERE `shoot_id`='$shoot_id'";
 		// Return  
-		return $this->db_fetch_all($sql);
+		return $this->db_fetch_one($sql);
 	}
 
 	//--UPDATE--//
