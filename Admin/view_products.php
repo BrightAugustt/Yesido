@@ -407,6 +407,8 @@ include("../controllers/shoot_controller.php");
                 <th scope="col"></th>
                 <th scope="col">Description</th>
                 <th scope="col"></th>
+                <th scope="col">Keyword</th>
+                <th scope="col"></th>
                 <th scope="col">Edit</th>
                 <th scope="col"></th>
                 <th scope="col">Delete</th>
@@ -423,6 +425,7 @@ include("../controllers/shoot_controller.php");
                           echo "<td>".$shoot[$i]['shoot_name']."<td>";
                           echo "<td>".$shoot[$i]['shoot_price']."<td>";
                           echo "<td>".$shoot[$i]['shoot_label']."<td>";
+                          echo "<td>".$shoot[$i]['shoot_key']."<td>";
 
                           // Edit & Delete form 
                           echo "<th><form action='updateshoots.php'  method='POST'>
@@ -435,7 +438,59 @@ include("../controllers/shoot_controller.php");
                           edit
                         </button>";
                           echo "<tr>";
-                         
+                         echo 
+                         "<div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                         <div class='modal-dialog' role='document'>
+                           <div class='modal-content'>
+                             <div class='modal-header'>
+                               <h5 class='modal-title' id='exampleModalLabel'>Shoot Edit</h5>
+                               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                 <span aria-hidden='true'>&times;</span>
+                               </button>
+                             </div>
+                             <div class='modal-body'>
+                               <form action='../actions/updateshoots.php' method='POST'>
+                                  <div class='formgroup'>
+                                     <input type='hidden' name='shoot_id' value= '".$shoot[$i]['shoot_id']."'>
+                                 </div>
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Name:</label>
+                                   <input type='text' class='form-control' id='shoot_name' placeholder= '".$shoot[$i]['shoot_name']."'>
+                                   <input type='hidden' name='cat_id'  value= '".$shoot[$i]['shoot_id']."'>
+                                 </div>
+
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Price:</label>
+                                   <input type='text' class='form-control' id='shoot_price' placeholder= '".$shoot[$i]['shoot_price']."'>
+                                   <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
+                                 </div>
+
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Label:</label>
+                                   <input type='text' class='form-control' id='shoot_label' plcaeholder= '".$shoot[$i]['shoot_label']."'>
+                                   <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
+                                 </div>
+
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>Shoot Label:</label>
+                                   <input type='text' class='form-control' id='shoot_key' plcaeholder= '".$shoot[$i]['shoot_key']."'>
+                                   <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
+                                 </div>
+                                 <?php
+                                   }
+                                   displayproductCtr();
+                                 ?>
+                               </form>
+                             </div>
+                             <div class='modal-footer'>
+                               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
+                               <button type='button' class='btn btn-primary' name=''>Save Changes</button>
+                             </div>
+                           </div>
+                         </div>
+                       
+                       </div>";
+
                         }
 
                                           
@@ -450,7 +505,7 @@ include("../controllers/shoot_controller.php");
 
 <!-- Modal -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -491,7 +546,7 @@ include("../controllers/shoot_controller.php");
     </div>
   </div>
 
-</div>
+</div> -->
 
 <script>
   $('#myModal').on('shown.bs.modal', function () {
