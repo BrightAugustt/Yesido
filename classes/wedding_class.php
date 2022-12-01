@@ -59,7 +59,7 @@ class wedding_class extends db_connection
 		// Write query
 		$sql =  "DELETE FROM `wedding` WHERE `wedding_id` = '$wedding_id'";
 		// Return  
-		return $this->db_fetch_all($sql);
+		return $this->db_query($sql);
 	}
 
 
