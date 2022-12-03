@@ -149,7 +149,7 @@ include("../controllers/wedding_controller.php");
         <div class="row gx-5">
             <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 rounded" src="../images/wedding/<?php echo ($wedding['wedding_img'])?>" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100 rounded" src="../images/images/wedding/?php echo ($wedding['wedding_img'])?>" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-7">
@@ -162,7 +162,7 @@ include("../controllers/wedding_controller.php");
                         <li class="nav-item w-50">
                             <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="cart.php">Book Service</a>
                         </li>
-                        <input type="hidden" name="p_id" value="<?php echo($item['wedding_id'])?>">
+                        <input type="hidden" name="p_id" value="<?php echo($wedding['wedding_id'])?>">
                         <input type="hidden" name="qty" value="1">
                 </ul>
             </div>

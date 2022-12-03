@@ -168,7 +168,7 @@ include("../controllers/shoot_controller.php");
                         </a>
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="single_product.php?wedding_id=<?php echo($item['shoot_id'])?>"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-light btn-square rounded-circle mx-1" href="single_shoot.php?shoot_id=<?php echo($item['shoot_id'])?>"><i class="fa fa-eye"></i></a>
                                 <a class="btn btn-light btn-square rounded-circle mx-1" href="cart.php"><i class="fa fa-shopping-cart"></i></a>
                             </div>
                         </div>

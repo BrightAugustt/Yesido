@@ -1,11 +1,11 @@
 <?php
 
-include("../controllers/cart_controller.php");
 session_start();
-$cid = $_SESSION['customer_id'];
-$count = count;
+// if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
+//     //   header('Location:../index.php');
+//    };
+include("../controllers/shoot_controller.php");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -140,40 +140,36 @@ $count = count;
         </div>
     </div>
 
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Image</th>
-      <th scope="col">Service</th>
-      <th scope="col">Price</th>
-      <th scope="col">Qunatity</th>
-      <th scope="col">Cancel</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-    $cart=  get_from_cart_ctr($_SESSION['customer_id']);
-    foreach($cart as $item){
-    ?>
-    <tr>
-      <td><img src="../images/wedding/<?php echo ($wedding['wedding_img'])?>" style="width: 50px;"></td>
-      <td><?php echo($item['product_title']) ?></td>
-      <td><?php echo('GHC'); echo($item['products.product_price*cart.qty']); ?></td>
-      <td>@mdo</td>
-      <td>
-      <form action="../functions/remove_from_cart.php" method="POST">
-        <input type="hidden" name="p_id" value="<?php echo($item['product_id']);?>" >
-        <!-- <button name="deleteCart" ></button> -->
-        <input type="submit" name="deleteCart" value="Delete">
-      </form>
-      </td>
-    </tr>
-    <?php
-    }
-    ?>
-  </tbody>
-</table>
+     <!-- About Start -->
+     <?php 
+                    $shoot_id = $_GET['shoot_id'];
+                    $shoot = selectoneshoot_ctr($shoot_id);
+                    ?>
+     <div class="container-fluid p-5">
+        <div class="row gx-5">
+            <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded" src="../images/images/shoots/<?php echo ($shoot['shoot_img'])?>" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="mb-4">
+                    <h5 class="text-primary text-uppercase">Shoot</h5>
+                    <h1 class="display-3 text-uppercase mb-0"><?php print_r($shoot['shoot_name']);?></h1>
+                </div>
+                <p class="mb-4"><?php print_r ($shoot['shoot_label'])?></p>
+                <ul class="nav nav-pills justify-content-between mb-3">
+                        <li class="nav-item w-50">
+                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="cart.php">Book Service</a>
+                        </li>
+                        <input type="hidden" name="p_id" value="<?php echo($shoot['shoot_id'])?>">
+                        <input type="hidden" name="qty" value="1">
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <!-- About End -->
 
     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
@@ -228,6 +224,8 @@ $count = count;
         </div>
     </div>   
     <!-- Footer End -->
+
+
 
 
     <!-- Back to Top -->
