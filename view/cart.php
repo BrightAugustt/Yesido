@@ -3,7 +3,7 @@
 include("../controllers/cart_controller.php");
 session_start();
 $cid = $_SESSION['customer_id'];
-$countwed =count_cart_ctr($cid);
+$countwed =count_weddingcart_ctr($cid);
 ?>
 
 
@@ -152,14 +152,23 @@ $countwed =count_cart_ctr($cid);
   </thead>
   <tbody>
     <?php
-    $cart=  get_from_cart_ctr($_SESSION['customer_id']);
+    $weddingcart=get_from_weddingcart_ctr($_SESSION['customer_id']);
     foreach($cart as $item){
     ?>
     <tr>
-      <td><img src="../images/wedding/<?php echo ($wedding['wedding_img'])?>" style="width: 50px;"></td>
-      <td><?php echo($item['product_title']) ?></td>
-      <td><?php echo('GHC'); echo($item['products.product_price*cart.qty']); ?></td>
-      <td>@mdo</td>
+      <td><img src="../images/images/wedding/<?php echo ($wedding['wedding_img'])?>" style="width: 50px;"></td>
+      <td><?php echo($item['wedding_name']) ?></td>
+      <td><?php echo('GHC'); echo($item['wedding.wedding_price*cart.qty']); ?></td>
+      <td>
+      <div class="input-group mb-3" style="width: 100px;">
+          <div class="input-group-prepend">
+            <button class="input-group-text" id="pid" onclick="loadDoc1(<?php echo $item['product_id'];?>)">-</button>
+          </div>
+          <input type="text" class="form-control text-center bg-white"  value="<?php echo $item['qty'];?>" disabled>
+          <div class="input-group-appnd">
+            <button class="input-group-text" id="pin" onclick="loadDoc(<?php echo $item['product_id'];?>)" >+</button>
+          </div>
+      </td>
       <td>
       <form action="../functions/remove_from_cart.php" method="POST">
         <input type="hidden" name="p_id" value="<?php echo($item['product_id']);?>" >
@@ -173,6 +182,46 @@ $countwed =count_cart_ctr($cid);
     ?>
   </tbody>
 </table>
+
+<!-- Script to handle qyt changes -->
+<script>
+                function loadDoc(id){
+                    inputbx= document.getElementByID("pin").value;
+                    console.log(id);
+                    dataString = 'pid='+ id +'&inputbx='+inputbx;
+                  
+                
+
+                $.ajax({
+                    type: "POST",
+                    url:"../actions/update_qty.php",
+                    data: dataString,
+                    cache:false,
+                    success:function(result){
+                        alert(result);
+                    }
+                    
+                });
+                
+            }
+
+            function loadDoc1(id1){
+                inputbx1 = document.getElementByID("pid").value;
+                dataString= 'pid1='+id1+'&inputbx1='+inputbx1;
+                console.log(id1);
+            }
+
+            $.ajax({
+                    type: "POST",
+                    url:"../actions/update_qty.php",
+                    data: dataString,
+                    cache:false,
+                    success:function(result){
+                        alert(result);
+                    }
+                    
+                });
+            </script>
 
     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
