@@ -177,13 +177,10 @@ $cid = $_SESSION['customer_id'];
                         <p class="text-uppercase text-secondary m-0">GHC <?php echo($item['wedding_price'])?></p>
                         <p class="text-uppercase text-secondary m-0"><?php echo($item['wedding_label'])?></p>
                         <ul class="nav nav-pills justify-content-between mb-3">
-                        <!-- <li class="nav-item w-50 text-center">
-                            <a class="nav-link text-uppercase text-center w-100 active m-0" data-bs-toggle="pill" href="cart.php" name="addTocart">Book Service</a>
-                        </li> -->
                         </ul>
                         <input type="hidden" name="p_id" value="<?php echo($item['wedding_id'])?>">
                         <input type="hidden" name="qty" value="1">
-                        <button type="submit" name="addToCart" class="nav-item w-50 text-uppercase text-center w-100 active m-0" >Book Service</button>
+                        <button type="submit" name="addToCart">Book Service</button>
                     </div>
                 </div>
                 </form>
