@@ -198,6 +198,8 @@ include("../controllers/shoot_controller.php");
                 <th scope="col"></th>
                 <th scope="col">Keyword</th>
                 <th scope="col"></th>
+                <th scope="col">Image</th>
+                <!-- <th scope="col"></th> -->
                 <th scope="col">Edit</th>
                 <th scope="col"></th>
                 <th scope="col">Delete</th>
@@ -215,6 +217,7 @@ include("../controllers/shoot_controller.php");
                           echo "<td>".$shoot[$i]['shoot_price']."<td>";
                           echo "<td>".$shoot[$i]['shoot_label']."<td>";
                           echo "<td>".$shoot[$i]['shoot_key']."<td>";
+                          echo "<td><img src='../images/images/shoots"  . $shoot[$i]['shoot_img']  . "' height='100px'></td>";
 
                           // Edit & Delete form 
                           echo "<th><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>

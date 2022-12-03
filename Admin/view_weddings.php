@@ -207,7 +207,7 @@ include("../controllers/wedding_controller.php");
                           echo "<td>".$wedding[$i]['wedding_name']."<td>";
                           echo "<td>".$wedding[$i]['wedding_price']."<td>";
                           echo "<td>".$wedding[$i]['wedding_label']."<td>";
-                          echo "<td><img src='../images/wedding/"  . $wedding[$i]['wedding_img']  . "' height='100px'></td>";
+                          echo "<td><img src='../images/images/wedding/"  . $wedding[$i]['wedding_img']  . "' height='100px'></td>";
                           echo "<td>".$wedding[$i]['wedding_key']."<td>";
 
                           // Edit & Delete form 

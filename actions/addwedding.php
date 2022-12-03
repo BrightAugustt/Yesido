@@ -17,7 +17,7 @@ if(isset($_POST["addwedding"])){
 
 
     // image upload 
-    $output_dir = "../images/wedding/";
+    $output_dir = "../images/images/wedding/";
     $RandomNum = time();
     $ImageName = str_replace(' ','-',strtolower($_FILES['wedding_img']['name'][0]));
     $ImageType = $_FILES['wedding_img']['type'][0];

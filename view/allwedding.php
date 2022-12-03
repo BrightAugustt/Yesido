@@ -160,7 +160,7 @@ include("../controllers/wedding_controller.php");
                 <div class="team-item position-relative">
                     <div class="position-relative overflow-hidden rounded">
                         <a href="single_product.php?wedding_id=<?php echo ($item['wedding_id'])?>">
-                        <img class="img-fluid w-100" src="../images/wedding/<?php echo($item['wedding_img']) ?>" alt="lmg">
+                        <img class="img-fluid w-100" src="../images/images/wedding/<?php echo($item['wedding_img']) ?>" alt="lmg">
                         </a>
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">

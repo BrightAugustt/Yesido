@@ -183,7 +183,7 @@ include("../controllers/wedding_controller.php");
               <h5 class="card-title">Add Shoot Forms</h5>
 
               <!-- General Form Elements -->
-              <form method="POST" action="../actions/addshoots.php">
+              <form method="POST" action="../actions/addshoots.php" enctype="multipart/form-data">
 
               <div class="form-group">
                 <label for="shoot_name">Name</label>
@@ -203,6 +203,11 @@ include("../controllers/wedding_controller.php");
               <div class="form-group">
                 <label for="shoot_key">Keyword</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="key" name="shoot_key" required>
+              </div>
+
+              <div class="form-group">
+                <label for="shoot_img">Image</label>
+                <input type="file" class="form-control" name="shoot_img[]" id="exampleFormControlInput1" required accept="image/*"  >
               </div>
 
                 <!-- <div class="row mb-3">
