@@ -1,17 +1,3 @@
-<?php
-
-session_start();
-// if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
-//       header('Location:../Login/login.php');
-//    };
-include("../controllers/wedding_controller.php");
-// // include("../settings/core.php");
-// $cid = $_SESSION['customer_id'];
-// // $count = count_cart_ctr($cid);
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,8 +30,9 @@ include("../controllers/wedding_controller.php");
     <link href="css/style.css" rel="stylesheet">
 </head>
 
- <!-- Header Start -->
- <div class="container-fluid bg-dark px-0">
+<body>
+    <!-- Header Start -->
+    <div class="container-fluid bg-dark px-0">
         <div class="row gx-0">
             <div class="col-lg-3 bg-dark d-none d-lg-block">
                 <a href="index.php" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
@@ -131,7 +118,7 @@ include("../controllers/wedding_controller.php");
             <!-- Sidebar Start -->
             <div class="col-lg-4">
                 <!-- Search Form Start -->
-                <div class="mb-5 text-center">
+                <div class="mb-5">
                     <div class="input-group">
                         <input type="text" class="form-control p-3" placeholder="Keyword">
                         <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
@@ -143,51 +130,6 @@ include("../controllers/wedding_controller.php");
             <!-- Sidebar End -->
         </div>
     </div>
-    
-    <div class="container-fluid p-5">
-        <div class="mb-5 text-center">
-            <h5 class="text-primary text-uppercase">The Team</h5>
-            <h1 class="display-3 text-uppercase mb-0">Expert Trainers</h1>
-        </div>
-        <?php
-        $wedding= selectall_wedding_ctr();
-            foreach($wedding as $item){ 
-        ?>
-        <div class="row g-5">
-            <div class="col-lg-4 col-md-6">
-                <div class="team-item position-relative">
-                    <div class="position-relative overflow-hidden rounded">
-                        <a href="single_product.php?wedding_id=<?php echo($item['wedding_id'])?>">
-                        <img class="img-fluid w-100" src="../images/wedding/<?php echo $item['wedding_img']; ?>" alt="lmg">
-                        </a>
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(34, 36, 41, .9);">
-                        <h5 class="text-uppercase text-light"><?php echo($item['wedding_name'])?></h5>
-                        <p class="text-uppercase text-secondary m-0">GHC <?php echo($item['wedding_price'])?></p>
-                        <p class="text-uppercase text-secondary m-0"><?php echo($item['wedding_label'])?></p>
-                        <input type="hidden" name="p_id" value="<?php echo $item["wedding_id"]?>">
-                        <input type="hidden" name="qty" value="1">
-                    </div>
-                </div>
-            </div>
-            <?php
-            }
-        ?>
-        </div>
-    </div>
-
- 
-
-        </div>
-    </div>
-    <!-- Team End -->
 
     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
