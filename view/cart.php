@@ -1,12 +1,3 @@
-<?php
-
-session_start();
-// if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
-//     //   header('Location:../index.php');
-//    };
-include("../controllers/wedding_controller.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,36 +131,6 @@ include("../controllers/wedding_controller.php");
         </div>
     </div>
 
-     <!-- About Start -->
-     <?php 
-                    $wedding_id = $_GET['wedding_id'];
-                    $wedding = selectonewedding_ctr($wedding_id);
-                    ?>
-     <div class="container-fluid p-5">
-        <div class="row gx-5">
-            <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
-                <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 rounded" src="../images/wedding/<?php echo ($wedding['wedding_img'])?>" style="object-fit: cover;">
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <div class="mb-4">
-                    <h5 class="text-primary text-uppercase">Wedding</h5>
-                    <h1 class="display-3 text-uppercase mb-0"><?php print_r($wedding['wedding_name']);?></h1>
-                </div>
-                <p class="mb-4"><?php print_r ($wedding['wedding_label'])?></p>
-                <ul class="nav nav-pills justify-content-between mb-3">
-                        <li class="nav-item w-50">
-                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="#pills-1">Book Service</a>
-                        </li>
-                        <input type="hidden" name="p_id" value="<?php echo($item['wedding_id'])?>">
-                        <input type="hidden" name="qty" value="1">
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
         <div class="row gx-5">
@@ -223,8 +184,6 @@ include("../controllers/wedding_controller.php");
         </div>
     </div>   
     <!-- Footer End -->
-
-
 
 
     <!-- Back to Top -->

@@ -147,24 +147,25 @@ include("../controllers/wedding_controller.php");
     <div class="container-fluid p-5">
         <div class="mb-5 text-center">
             <h5 class="text-primary text-uppercase">The Team</h5>
-            <h1 class="display-3 text-uppercase mb-0">Expert Trainers</h1>
+            <h1 class="display-3 text-uppercase mb-0">Wedding Category</h1>
         </div>
+      
+        <div class="row g-5">
         <?php
         $wedding= selectall_wedding_ctr();
             foreach($wedding as $item){ 
         ?>
-        <div class="row g-5">
             <div class="col-lg-4 col-md-6">
+                
                 <div class="team-item position-relative">
                     <div class="position-relative overflow-hidden rounded">
-                        <a href="single_product.php?wedding_id=<?php echo($item['wedding_id'])?>">
-                        <img class="img-fluid w-100" src="../images/wedding/<?php echo $item['wedding_img']; ?>" alt="lmg">
+                        <a href="single_product.php?wedding_id=<?php echo ($item['wedding_id'])?>">
+                        <img class="img-fluid w-100" src="../images/wedding/<?php echo($item['wedding_img']) ?>" alt="lmg">
                         </a>
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-square rounded-circle mx-1" href="single_product.php?wedding_id=<?php echo($item['wedding_id'])?>"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-light btn-square rounded-circle mx-1" href="cart.php"><i class="fa fa-shopping-cart"></i></a>
                             </div>
                         </div>
                     </div>
@@ -172,19 +173,17 @@ include("../controllers/wedding_controller.php");
                         <h5 class="text-uppercase text-light"><?php echo($item['wedding_name'])?></h5>
                         <p class="text-uppercase text-secondary m-0">GHC <?php echo($item['wedding_price'])?></p>
                         <p class="text-uppercase text-secondary m-0"><?php echo($item['wedding_label'])?></p>
-                        <input type="hidden" name="p_id" value="<?php echo $item["wedding_id"]?>">
+                        <input type="hidden" name="p_id" value="<?php echo($item['wedding_id'])?>">
                         <input type="hidden" name="qty" value="1">
                     </div>
                 </div>
             </div>
             <?php
             }
+       
         ?>
         </div>
     </div>
-
- 
-
         </div>
     </div>
     <!-- Team End -->

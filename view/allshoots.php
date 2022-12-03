@@ -131,6 +131,10 @@
         </div>
     </div>
 
+
+    <!-- Shoots Display -->
+    
+
     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
         <div class="row gx-5">
