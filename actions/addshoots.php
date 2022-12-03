@@ -24,7 +24,7 @@ if(isset($_POST["addshoots"])){
     $ImageExt = str_replace('.','',$ImageExt);
     $ImageName = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
     $NewImageName = $ImageName.'-'.$RandomNum.'.'.$ImageExt;
-    $ret[$NewImageName]= $output_dir.$NewImageName;d
+    $ret[$NewImageName]= $output_dir.$NewImageName;da
 
     move_uploaded_file($_FILES["shoot_img"]["tmp_name"][0],$output_dir."/".$NewImageName);
         if(addshoot_ctr($shoot_name,$shoot_price,$shoot_label,$NewImageName,$shoot_key)==TRUE){
