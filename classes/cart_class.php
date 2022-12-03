@@ -200,7 +200,7 @@ class cart_class extends db_connection
 	public function deleteshoot_cart($p_id,$c_id){
 
 		// Write query
-		$sql =  "DELETE FROM `cart` WHERE `p_id`='$p_id' AND `c_id`='$c_id'";
+		$sql =  "DELETE FROM `shootcart` WHERE `p_id`='$p_id' AND `c_id`='$c_id'";
 		// Return  
 		return $this->db_query($sql);
 	}
@@ -208,7 +208,7 @@ class cart_class extends db_connection
 	public function addshoot_cart($p_id,$ip_add,$c_id,$qty){
 
 		// Write query
-		$sql = "INSERT INTO `cart`(`p_id`, `ip_add`, `c_id`, `qty`) VALUES ('$p_id','$ip_add','$c_id','$qty')";
+		$sql = "INSERT INTO `shootcart`(`p_id`, `ip_add`, `c_id`, `qty`) VALUES ('$p_id','$ip_add','$c_id','$qty')";
 		// Return  
 		return $this -> db_query($sql);
 	}
@@ -216,7 +216,7 @@ class cart_class extends db_connection
 	public function increaseshoot_cart($p_id,$c_id){
 
 		// Write query
-		$sql = "UPDATE `cart` SET qty=(qty + 1 )  WHERE `p_id`='$p_id' AND `c_id`='$c_id'";
+		$sql = "UPDATE `shootcart` SET qty=(qty + 1 )  WHERE `p_id`='$p_id' AND `c_id`='$c_id'";
 		// Return  
 		return $this -> db_query($sql);
 	}
@@ -224,7 +224,7 @@ class cart_class extends db_connection
 	public function decreaseshoot_cart($p_id,$c_id){
 
 		// Write query
-		$sql = "UPDATE `cart` SET qty=(qty - 1 )  WHERE `p_id`='$p_id' AND `c_id`='$c_id'";
+		$sql = "UPDATE `shootcart` SET qty=(qty - 1 )  WHERE `p_id`='$p_id' AND `c_id`='$c_id'";
 		// Return  
 		return $this -> db_query($sql);
 	}
@@ -232,7 +232,7 @@ class cart_class extends db_connection
 	public function updateshoot_cart($p_id,$c_id){
 
 		// Write query
-		$sql = "UPDATE `cart` SET qty=qty+1   WHERE `p_id`='$p_id' AND `c_id`='$c_id'";
+		$sql = "UPDATE `shootcart` SET qty=qty+1   WHERE `p_id`='$p_id' AND `c_id`='$c_id'";
 		// Return  
 		return $this -> db_query($sql);
 	}
@@ -241,7 +241,7 @@ class cart_class extends db_connection
 	public function selectallshoot_cart(){
 
 		// Write query
-		$sql =  "SELECT * FROM `cart`";
+		$sql =  "SELECT * FROM `shootcart`";
 		// Return  
 		return $this -> db_fetch_all($sql);
 	}
@@ -249,7 +249,7 @@ class cart_class extends db_connection
 	public function selectoneshoot_cart($c_id){
 
 		// Write query
-		$sql =  "SELECT * FROM `cart` WHERE `c_id` = '$c_id'";
+		$sql =  "SELECT * FROM `shootcart` WHERE `c_id` = '$c_id'";
 		// Return  
 		return $this->db_fetch_all($sql);
 	}
@@ -257,14 +257,14 @@ class cart_class extends db_connection
 	public function countcartshoot_quantity($c_id){
 
 		// Write query
-		$sql =  "SELECT SUM(qty) FROM `cart` WHERE `c_id` = '$c_id'";
+		$sql =  "SELECT SUM(qty) FROM `shootcart` WHERE `c_id` = '$c_id'";
 		// Return  
 		return $this->db_fetch_all($sql);
 	}
 
 	public function updatecartshoot_quantity($p_id,$c_id){
 
-		$sql = "UPDATE `cart` SET qty=qty-1 WHERE p_id = '$p_id' AND `c_id`='$c_id'";
+		$sql = "UPDATE `shootcart` SET qty=qty-1 WHERE p_id = '$p_id' AND `c_id`='$c_id'";
 		// Return  
 		return $this -> db_query($sql);
 	}
@@ -272,7 +272,7 @@ class cart_class extends db_connection
 	public function checkcartshoot_quantity($qty,$p_id,$c_id){
 
 		// Write query
-		$sql =  "SELECT `qty` FROM `cart` WHERE `p_id` = '$p_id' AND `c_id`='$c_id'";
+		$sql =  "SELECT `qty` FROM `shootcart` WHERE `p_id` = '$p_id' AND `c_id`='$c_id'";
 		// Return  
 		return $this->db_fetch_all($sql);
 	}
@@ -280,7 +280,7 @@ class cart_class extends db_connection
 	public function getusershoot_cart($c_id){
 
 		// Write query
-		$sql =  "SELECT * FROM `cart` inner join `products` on  cart.p_id = shoot.shoot_id WHERE `c_id`= '$c_id'";
+		$sql =  "SELECT * FROM `shootcart` inner join `shoots` on  cart.p_id = shoot.shoot_id WHERE `c_id`= '$c_id'";
 		// Return  
 		return $this->db_fetch_all($sql);
 	}
@@ -296,7 +296,7 @@ class cart_class extends db_connection
 	public function delteusershoot_from_cart($c_id){
 
 		// Write query
-		$sql =  "DELETE FROM `cart` WHERE `c_id`='$c_id'";
+		$sql =  "DELETE FROM `shootcart` WHERE `c_id`='$c_id'";
 		// Return  
 		return $this->db_query($sql);
 	}
@@ -312,8 +312,7 @@ class cart_class extends db_connection
 	public function getfrom_shootcart($a){
 
 		// Write query
-		$sql =  "SELECT shoots.shoot_price*cart.qty ,cart.qty, shoots.shoot_id,shoots.shoot_name ,shoots.shoot_price, shoots.shoot_label,shoots.shoot_img, shoots.shoot_key  FROM cart  
-		INNER JOIN shoots ON cart.p_id = shoots.shoot_id WHERE cart.c_id ='$a'";
+		$sql =  "SELECT shoots.shoot_price*shootcart.qty ,shootcart.qty, shoots.shoot_id,shoots.shoot_name ,shoots.shoot_price, shoots.shoot_label,shoots.shoot_img, shoots.shoot_key FROM shootcart INNER JOIN shoots ON shootcart.p_id = shoots.shoot_id WHERE shootcart.c_id ='$a'";
 		// Return  
 		return $this->db_fetch_all($sql);
 	}
@@ -356,7 +355,7 @@ class cart_class extends db_connection
 	}
 
 	function delete_after_pay_shootcart($cid){
-		$sql = "DELETE FROM `cart` WHERE `c_id`='$cid'";
+		$sql = "DELETE FROM `shootcart` WHERE `c_id`='$cid'";
 	
 		return $this->db_query($sql);
 	}
@@ -364,13 +363,13 @@ class cart_class extends db_connection
 
 	function get_cart_shootdetails($c_id){
 
-	$sql="SELECT `p_id`, `qty` FROM `cart` WHERE c_id='$c_id'";
+	$sql="SELECT `p_id`, `qty` FROM `shootcart` WHERE c_id='$c_id'";
 		
 	return $this->db_fetch_one($sql);
 	}
 
 	function total_shootcart_price($a){
-        $sql = "SELECT SUM(cart.qty*shoots.shoot_price) FROM `cart` INNER JOIN `shoots` ON cart.p_id = shoots.shoots_id WHERE cart.c_id ='$a'";
+        $sql = "SELECT SUM(cart.qty*shoots.shoot_price) FROM `shootcart` INNER JOIN `shoots` ON cart.p_id = shoots.shoots_id WHERE cart.c_id ='$a'";
     
         return $this->db_fetch_one($sql);
 

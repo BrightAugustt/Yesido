@@ -155,6 +155,7 @@ $countwed =count_shootcart_ctr($cid);
   <tbody>
     <?php
     $weddingcart=get_from_weddingcart_ctr($_SESSION['customer_id']);
+    $shootcart=get_from_shootcart_ctr($_SESSION['customer_id']);
     foreach($weddingcart as $item){
     ?>
     <tr>
@@ -175,7 +176,7 @@ $countwed =count_shootcart_ctr($cid);
       <form action="../functions/remove_from_cart.php" method="POST">
         <input type="hidden" name="p_id" value="<?php echo($item['wedding_id']);?>" >
         <!-- <button name="deleteCart" ></button> -->
-        <input type="submit" name="deleteCart" class='btn btn-outline-danger' value="Delete">
+        <input type="submit" name="deleteCart" class='btn btn-outline-danger' value="Delete Order">
       </form>
       </td>
     </tr>
@@ -184,13 +185,12 @@ $countwed =count_shootcart_ctr($cid);
     ?>
 <!-- Shoots -->
 <?php
-    $shootcart=get_from_shootcart_ctr($_SESSION['customer_id']);
     foreach($shootcart as $item){
     ?>
     <tr>
       <td><img src="../images/images/shoots/<?php echo ($item['shoot_img'])?>" style="width: 50px;"></td>
       <td><?php echo($item['shoot_name']) ?></td>
-      <td><?php echo('GHC'); echo($item['shoots.shoot_price*cart.qty']); ?></td>
+      <td><?php echo('GHC'); echo($item['shoots.shoot_price*shootcart.qty']); ?></td>
       <td>
       <div class="input-group mb-3" style="width: 100px;">
           <div class="input-group-prepend">
@@ -205,7 +205,7 @@ $countwed =count_shootcart_ctr($cid);
       <form action="../functions/remove_from_cart.php" method="POST">
         <input type="hidden" name="p_id" value="<?php echo($item['shoot_id']);?>" >
         <!-- <button name="deleteCart" ></button> -->
-        <input type="submit" name="deleteCart" class='btn btn-outline-danger' value="Delete">
+        <input type="submit" name="deleteCart" class='btn btn-outline-danger' value="Delete Order">
       </form>
       </td>
     </tr>
