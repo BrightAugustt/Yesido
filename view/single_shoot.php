@@ -161,7 +161,7 @@ include("../controllers/shoot_controller.php");
                 <p class="mb-4">GHC <?php print_r ($shoot['shoot_price'])?></p>
                 <ul class="nav nav-pills justify-content-between mb-3">
                         <li class="nav-item w-50">
-                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="cart.php">Book Service</a>
+                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="cart.php" name="addTocart">Book Service</a>
                         </li>
                         <input type="hidden" name="p_id" value="<?php echo($shoot['shoot_id'])?>">
                         <input type="hidden" name="qty" value="1">

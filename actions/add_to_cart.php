@@ -1,6 +1,6 @@
 <?php
 session_start();
- include("../controllers/product_controller.php");
+ include("../controllers/cart_controller.php");
 
 //  Collect search input from user
 if(isset($_POST['addToCart'])){

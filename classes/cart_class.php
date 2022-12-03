@@ -24,7 +24,7 @@ class cart_class extends db_connection
 	public function addwedding_cart($p_id,$ip_add,$c_id,$qty){
 
 		// Write query
-		$sql = "INSERT INTO `cart`(`p_id`, `ip_add`, `c_id`, `qty`) VALUES ('$p_id','$ip_add','$c_id','$qty')";
+		$sql = "INSERT INTO `cart`(`p_id`,`ip_add`,`c_id`,`qty`) VALUES ('$p_id','$ip_add','$c_id','$qty')";
 		// Return  
 		return $this -> db_query($sql);
 	}

@@ -159,7 +159,7 @@ $cid = $_SESSION['customer_id'];
             foreach($wedding as $item){ 
         ?>
             <div class="col-lg-4 col-md-6">
-                
+                <form method="POST" action="../actions/add_to_cart.php">
                 <div class="team-item position-relative">
                     <div class="position-relative overflow-hidden rounded">
                         <a href="single_product.php?wedding_id=<?php echo ($item['wedding_id'])?>">
@@ -168,7 +168,7 @@ $cid = $_SESSION['customer_id'];
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">
                                 <a class="btn btn-light btn-square rounded-circle mx-1" href="single_product.php?wedding_id=<?php echo($item['wedding_id'])?>"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="cart.php"><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-light btn-square rounded-circle mx-1" href="cart.php" name="addToCart"><i class="fa fa-shopping-cart"></i></a>
                             </div>
                         </div>
                     </div>
@@ -176,10 +176,17 @@ $cid = $_SESSION['customer_id'];
                         <h5 class="text-uppercase text-light"><?php echo($item['wedding_name'])?></h5>
                         <p class="text-uppercase text-secondary m-0">GHC <?php echo($item['wedding_price'])?></p>
                         <p class="text-uppercase text-secondary m-0"><?php echo($item['wedding_label'])?></p>
+                        <ul class="nav nav-pills justify-content-between mb-3">
+                        <!-- <li class="nav-item w-50 text-center">
+                            <a class="nav-link text-uppercase text-center w-100 active m-0" data-bs-toggle="pill" href="cart.php" name="addTocart">Book Service</a>
+                        </li> -->
+                        </ul>
                         <input type="hidden" name="p_id" value="<?php echo($item['wedding_id'])?>">
                         <input type="hidden" name="qty" value="1">
+                        <button type="submit" name="addToCart" class="nav-item w-50 text-uppercase text-center w-100 active m-0" >Book Service</button>
                     </div>
                 </div>
+                </form>
             </div>
             <?php
             }
