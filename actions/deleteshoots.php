@@ -2,7 +2,7 @@
 include("../controllers/shoot_controller.php");
 
 if(isset($_POST["delete"])){
-    $shoot_id = $_POST["shoot_id"];
+    $wedding_id = $_POST["shoot_id"];
 
     // controller
     $result=deleteshoot_ctr($shoot_id);

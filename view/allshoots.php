@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+// if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
+//       header('Location:../Login/login.php');
+//    };
+include("../controllers/shoot_controller.php");
+// // include("../settings/core.php");
+// $cid = $_SESSION['customer_id'];
+// // $count = count_cart_ctr($cid);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,7 +128,7 @@
 
 
    
-
+            <!-- <div style="text=center;"> -->
             <!-- Sidebar Start -->
             <div class="col-lg-4">
                 <!-- Search Form Start -->
@@ -127,12 +141,53 @@
                 <!-- Search Form End -->
                 <!-- Plain Text End -->
             </div>
+            </div>
             <!-- Sidebar End -->
         </div>
     </div>
 
 
     <!-- Shoots Display -->
+    <div class="container-fluid p-5">
+        <div class="mb-5 text-center">
+            <h5 class="text-primary text-uppercase">The Team</h5>
+            <h1 class="display-3 text-uppercase mb-0">Shoots Category</h1>
+        </div>
+      
+        <div class="row g-5">
+        <?php
+        $shoot= selectall_shoot_ctr();
+            foreach($shoot as $item){ 
+        ?>
+            <div class="col-lg-4 col-md-6">
+                
+                <div class="team-item position-relative">
+                    <div class="position-relative overflow-hidden rounded">
+                        <a href="single_product.php?wedding_id=<?php echo ($item['shoot_id'])?>">
+                        <img class="img-fluid w-100" src="../images/images/shoots/<?php echo($item['shoot_img']) ?>" alt="lmg">
+                        </a>
+                        <div class="team-overlay">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <a class="btn btn-light btn-square rounded-circle mx-1" href="single_product.php?wedding_id=<?php echo($item['shoot_id'])?>"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-light btn-square rounded-circle mx-1" href="cart.php"><i class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(34, 36, 41, .9);">
+                        <h5 class="text-uppercase text-light"><?php echo($item['shoot_name'])?></h5>
+                        <p class="text-uppercase text-secondary m-0">GHC <?php echo($item['shoot_price'])?></p>
+                        <p class="text-uppercase text-secondary m-0"><?php echo($item['shoot_label'])?></p>
+                        <input type="hidden" name="p_id" value="<?php echo($item['shoot_id'])?>">
+                        <input type="hidden" name="qty" value="1">
+                    </div>
+                </div>
+            </div>
+            <?php
+            }
+       
+        ?>
+        </div>
+    </div>
     
 
     <!-- Footer Start -->

@@ -223,7 +223,7 @@ include("../controllers/shoot_controller.php");
                           echo "<th><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
                           Update
                         </button><th>";
-                          echo "<th><form action='../actions/deleteshoot.php'  method='POST'>
+                          echo "<th><form action='../actions/deleteshoots.php'  method='POST'>
                           <input type = 'submit' value='delete' name='delete' class='btn btn-outline-danger'>
                           <input type='hidden' name='shoot_id' value='".$shoot[$i]['shoot_id']. "'></form><th>";
                           

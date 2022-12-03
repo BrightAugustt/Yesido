@@ -1,3 +1,12 @@
+<?php
+
+include("../controllers/cart_controller.php");
+session_start();
+$cid = $_SESSION['customer_id'];
+$count = count_cart_ctr($cid);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,6 +169,9 @@
       </form>
       </td>
     </tr>
+    <?php
+    }
+    ?>
   </tbody>
 </table>
 
