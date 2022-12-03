@@ -159,10 +159,10 @@ include("../controllers/shoot_controller.php");
             foreach($shoot as $item){ 
         ?>
             <div class="col-lg-4 col-md-6">
-                
+                <form  method="POST" action="../actions/addshoots_to_cart.php">
                 <div class="team-item position-relative">
                     <div class="position-relative overflow-hidden rounded">
-                        <a href="single_product.php?wedding_id=<?php echo ($item['shoot_id'])?>">
+                        <a href="single_shoot.php?shoot_id=<?php echo ($item['shoot_id'])?>">
                         <img class="img-fluid w-100" src="../images/images/shoots/<?php echo($item['shoot_img']) ?>" alt="lmg">
                         </a>
                         <div class="team-overlay">
@@ -176,10 +176,14 @@ include("../controllers/shoot_controller.php");
                         <h5 class="text-uppercase text-light"><?php echo($item['shoot_name'])?></h5>
                         <p class="text-uppercase text-secondary m-0">GHC <?php echo($item['shoot_price'])?></p>
                         <p class="text-uppercase text-secondary m-0"><?php echo($item['shoot_label'])?></p>
+                        <ul class="nav nav-pills justify-content-between mb-3">
+                        </ul>
                         <input type="hidden" name="p_id" value="<?php echo($item['shoot_id'])?>">
                         <input type="hidden" name="qty" value="1">
+                        <button type="submit" name="addToCart">Book Service</button>
                     </div>
                 </div>
+                </form>
             </div>
             <?php
             }
