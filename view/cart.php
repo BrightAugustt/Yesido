@@ -131,6 +131,38 @@
         </div>
     </div>
 
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Service</th>
+      <th scope="col">Price</th>
+      <th scope="col">Qunatity</th>
+      <th scope="col">Cancel</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    $cart=  get_from_cart_ctr($_SESSION['customer_id']);
+    foreach($cart as $item){
+    ?>
+    <tr>
+      <td><img src="../images/wedding/<?php echo ($wedding['wedding_img'])?>" style="width: 50px;"></td>
+      <td><?php echo($item['product_title']) ?></td>
+      <td><?php echo('GHC'); echo($item['products.product_price*cart.qty']); ?></td>
+      <td>@mdo</td>
+      <td>
+      <form action="../functions/remove_from_cart.php" method="POST">
+        <input type="hidden" name="p_id" value="<?php echo($item['product_id']);?>" >
+        <!-- <button name="deleteCart" ></button> -->
+        <input type="submit" name="deleteCart" value="Delete">
+      </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
         <div class="row gx-5">

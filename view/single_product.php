@@ -160,12 +160,13 @@ include("../controllers/wedding_controller.php");
                 <p class="mb-4"><?php print_r ($wedding['wedding_label'])?></p>
                 <ul class="nav nav-pills justify-content-between mb-3">
                         <li class="nav-item w-50">
-                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="#pills-1">Book Service</a>
+                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="cart.php">Book Service</a>
                         </li>
                         <input type="hidden" name="p_id" value="<?php echo($item['wedding_id'])?>">
                         <input type="hidden" name="qty" value="1">
                 </ul>
             </div>
+            
         </div>
     </div>
     <!-- About End -->
