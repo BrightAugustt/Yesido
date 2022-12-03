@@ -5,21 +5,21 @@ include("../classes/shoot_class.php");
 //sanitize data
 
 //--INSERT--//
-function addShoot_ctr($shoot_name,$shoot_price,$shoot_label,$shoot_key,$shoot_img){
+function addShoot_ctr($shoot_name,$shoot_price,$shoot_label,$shoot_img,$shoot_key){
 
     // Create an instance of the class
     $add_shoot = new shoot_class();
 
-     return $add_shoot->add_shoot($shoot_name,$shoot_price,$shoot_label,$shoot_key,$shoot_img);
+     return $add_shoot->add_shoot($shoot_name,$shoot_price,$shoot_label,$shoot_img,$shoot_key);
 
 }
 //--update--//
-function updateShoot_ctr($shoot_id,$shoot_name,$shoot_price,$shoot_label,$shoot_key,$shoot_img){
+function updateShoot_ctr($shoot_id,$shoot_name,$shoot_price,$shoot_label,$shoot_img,$shoot_key){
 
     // Create an instance of the class
     $verify_customer = new shoot_class();
 
-     return $verify_customer->update_shoot($shoot_id,$shoot_name,$shoot_price,$shoot_label,$shoot_key,$shoot_img);
+     return $verify_customer->update_shoot($shoot_id,$shoot_name,$shoot_price,$shoot_label,$shoot_img,$shoot_key);
 
 }
 

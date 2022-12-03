@@ -156,6 +156,7 @@ include("../controllers/shoot_controller.php");
               <i class="bi bi-circle"></i><span>Weddings</span>
             </a>
           </li>
+          
           <li>
             <a href="view_products.php">
               <i class="bi bi-circle"></i><span>Product Shoots</span>
@@ -187,19 +188,18 @@ include("../controllers/shoot_controller.php");
 
   
 
-          <table class="table table-striped">
+    <table class="table table-striped">
          <thead>
               <tr>
-                <th scope="col">Shoot Name</th>
+                <th scope="col">shoot Name</th>
                 <th scope="col"></th>
                 <th scope="col">Price</th>
                 <th scope="col"></th>
                 <th scope="col">Description</th>
                 <th scope="col"></th>
+                <th scope="col">Image</th>
                 <th scope="col">Keyword</th>
                 <th scope="col"></th>
-                <th scope="col">Image</th>
-                <!-- <th scope="col"></th> -->
                 <th scope="col">Edit</th>
                 <th scope="col"></th>
                 <th scope="col">Delete</th>
@@ -216,14 +216,14 @@ include("../controllers/shoot_controller.php");
                           echo "<td>".$shoot[$i]['shoot_name']."<td>";
                           echo "<td>".$shoot[$i]['shoot_price']."<td>";
                           echo "<td>".$shoot[$i]['shoot_label']."<td>";
+                          echo "<td><img src='../images/images/shoots/"  . $shoot[$i]['shoot_img']  . "' height='100px'></td>";
                           echo "<td>".$shoot[$i]['shoot_key']."<td>";
-                          echo "<td><img src='../images/images/shoots"  . $shoot[$i]['shoot_img']  . "' height='100px'></td>";
 
                           // Edit & Delete form 
                           echo "<th><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
                           Update
                         </button><th>";
-                          echo "<th><form action='../actions/deleteshoots.php'  method='POST'>
+                          echo "<th><form action='../actions/deleteshoot.php'  method='POST'>
                           <input type = 'submit' value='delete' name='delete' class='btn btn-outline-danger'>
                           <input type='hidden' name='shoot_id' value='".$shoot[$i]['shoot_id']. "'></form><th>";
                           
@@ -239,25 +239,31 @@ include("../controllers/shoot_controller.php");
                                </button>
                              </div>
                              <div class='modal-body'>
-                               <form action='../actions/updateshoots.php' method='POST'>
+                               <form action='../actions/updateshoot.php' method='POST' enctype='multipart/form-data'>
                                   <div class='formgroup'>
                                      <input type='hidden' name='shoot_id' value= '".$shoot[$i]['shoot_id']."'>
                                  </div>
                                  <div class='form-group'>
-                                   <label for='recipient-name' class='col-form-label'>Shoot Name:</label>
+                                   <label for='recipient-name' class='col-form-label'>shoot Name:</label>
                                    <input type='text' class='form-control' id='shoot_name' name='shoot_name' required placeholder= '".$shoot[$i]['shoot_name']."'>
                                    <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
                                  </div>
 
                                  <div class='form-group'>
-                                   <label for='recipient-name' class='col-form-label'>Shoot Price:</label>
+                                   <label for='recipient-name' class='col-form-label'>shoot Price:</label>
                                    <input type='text' class='form-control' id='shoot_price' name='shoot_price' required placeholder= '".$shoot[$i]['shoot_price']."'>
                                    <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
                                  </div>
 
                                  <div class='form-group'>
-                                   <label for='recipient-name' class='col-form-label'>Shoot Label:</label>
+                                   <label for='recipient-name' class='col-form-label'>shoot Label:</label>
                                    <input type='text' class='form-control' id='shoot_label' name='shoot_label' required placeholder= '".$shoot[$i]['shoot_label']."'>
+                                   <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
+                                 </div>
+
+                                 <div class='form-group'>
+                                   <label for='recipient-name' class='col-form-label'>shoot Image:</label>
+                                   <input type='file' class='form-control' id='shoot_img' name='shoot_img'  required placeholder= '".$shoot[$i]['shoot_img']."'>
                                    <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
                                  </div>
 

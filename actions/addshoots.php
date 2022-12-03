@@ -6,11 +6,17 @@ if(isset($_POST["addshoots"])){
     $allowTypes = array('jpg','png','jpeg','gif');
     $shoot_name=$_POST["shoot_name"];
     $shoot_price=$_POST["shoot_price"];
-    $shoot_label =$_POST["shoot_label"];
+    $shoot_label=$_POST["shoot_label"];
     $shoot_key=$_POST["shoot_key"];
 
+    // echo $shoot_key;
+    // echo $shoot_name;
+    // echo $shoot_price;
+    // echo $shoot_label;
 
-    $output_dir = "../images/images/shoots";
+
+    // image upload 
+    $output_dir = "../images/images/shoots/";
     $RandomNum = time();
     $ImageName = str_replace(' ','-',strtolower($_FILES['shoot_img']['name'][0]));
     $ImageType = $_FILES['shoot_img']['type'][0];
@@ -21,14 +27,14 @@ if(isset($_POST["addshoots"])){
     $ret[$NewImageName]= $output_dir.$NewImageName;
 
     move_uploaded_file($_FILES["shoot_img"]["tmp_name"][0],$output_dir."/".$NewImageName);
-    if(addShoot_ctr($shoot_name,$shoot_price,$shoot_label,$shoot_key,$NewImageName)==TRUE){
-        echo"<script>alert('Wedding submitted successfully')</script>";
-        header('Location:../Admin/view_products.php');
-    }else{
-        echo "<script>alert('Wedding not submitted successfully')</script>";
-    }
+        if(addshoot_ctr($shoot_name,$shoot_price,$shoot_label,$NewImageName,$shoot_key)==TRUE){
+            echo"<script>alert('shoot submitted successfully')</script>";
+            header('Location:../Admin/view_products.php');
+        }else{
+            echo "<script>alert('shoot not submitted successfully')</script>";
+        }
 }else{
-echo "Something went wrong";
+    echo "Something went wrong";
 }
 
 

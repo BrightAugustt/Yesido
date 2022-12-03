@@ -13,10 +13,10 @@ require("../settings/db_class.php");
 class shoot_class extends db_connection
 {
 	//--INSERT--//
-	public function add_shoot($shoot_name,$shoot_price,$shoot_label,$shoot_key,$shoot_img){
+	public function add_shoot($shoot_name,$shoot_price,$shoot_label,$shoot_img,$shoot_key){
 
 		// Write query
-		$sql = "INSERT INTO `shoots`(`shoot_name`,`shoot_price`,`shoot_label`,`shoot_key`,`shoot_img`) VALUES ('$shoot_name','$shoot_price','$shoot_label','$shoot_key','$shoot_img')";
+		$sql = "INSERT INTO `shoots`(`shoot_name`, `shoot_price`, `shoot_label`, `shoot_img`, `shoot_key`) VALUES ('$shoot_name','$shoot_price','$shoot_label','$shoot_img','$shoot_key')";
 		// Return  
 		return $this -> db_query($sql);
 
@@ -43,10 +43,10 @@ class shoot_class extends db_connection
 
 	//--UPDATE--//
 
-	public function update_shoot($shoot_id,$shoot_name,$shoot_price,$shoot_label,$shoot_key,$shoot_img){
+	public function update_shoot($shoot_id,$shoot_name,$shoot_price,$shoot_label,$shoot_img,$shoot_key){
 
 		// Write query
-		$sql = "UPDATE `shoots` SET `shoot_name`='$shoot_name',`shoot_price`='$shoot_price',`shoot_label`='$shoot_label',`shoot_key`='$shoot_key', `shoot_img`='$shoot_img' WHERE `shoot_id`='$shoot_id'";
+		$sql = "UPDATE `shoots` SET `shoot_name`='$shoot_name',`shoot_price`='$shoot_price',`shoot_label`='$shoot_label',`shoot_img`='$shoot_img',`shoot_key`='$shoot_key' WHERE `shoot_id` = '$shoot_id'";
 		// Return  
 		return $this -> db_query($sql);
 	}

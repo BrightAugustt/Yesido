@@ -4,7 +4,7 @@ if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and em
    {
       header('Location:../Login/login.php');
    };
-include("../controllers/wedding_controller.php");
+include("../controllers/shoot_controller.php");
 
 ?>
 
@@ -125,8 +125,8 @@ include("../controllers/wedding_controller.php");
         </a>
         <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="weddings.php" class="active">
-              <i class="bi bi-circle"></i><span>Add Weddings</span>
+            <a href="shoots.php" class="active">
+              <i class="bi bi-circle"></i><span>Add shoots</span>
             </a>
           </li>
           <li>
@@ -144,8 +144,8 @@ include("../controllers/wedding_controller.php");
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="view_weddings.php">
-              <i class="bi bi-circle"></i><span>Weddings</span>
+            <a href="view_shoots.php">
+              <i class="bi bi-circle"></i><span>shoots</span>
             </a>
           </li>
           <li>
@@ -182,42 +182,42 @@ include("../controllers/wedding_controller.php");
             <div class="card-body">
               <h5 class="card-title">Add Shoot Forms</h5>
 
-              <!-- General Form Elements -->
-              <form method="POST" action="../actions/addshoots.php" enctype="multipart/form-data">
+             <!-- General Form Elements -->
+             <form method="POST" action="../actions/addshoots.php" enctype="multipart/form-data">
 
-              <div class="form-group">
-                <label for="shoot_name">Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="shoot" name="shoot_name" required>
-              </div>
-
-              <div class="form-group">
-                <label for="shoot_price">Price</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Price" name="shoot_price" required>
-              </div>
-
-              <div class="form-group">
-                <label for="shoot_label">Description</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Description" name="shoot_label" required>
-              </div>
-
-              <div class="form-group">
-                <label for="shoot_key">Keyword</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="key" name="shoot_key" required>
-              </div>
-
-              <div class="form-group">
-                <label for="shoot_img">Image</label>
-                <input type="file" class="form-control" name="shoot_img[]" id="exampleFormControlInput1" required accept="image/*"  >
-              </div>
-
-                <!-- <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Submit Button</label> -->
-                  <div class="col-sm-10" style="margin-top: 15px;">
-                    <button type="submit" class="btn btn-primary" name="addshoots">Submit Form</button>
-                  </div>
+                <div class="form-group">
+                  <label for="shoot_name">Name</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Type of shoot" name="shoot_name" required>
                 </div>
 
-              </form>
+                <div class="form-group">
+                  <label for="shoot_price">Price</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Price" name="shoot_price" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="shoot_label">Description</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Description" name="shoot_label" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="shoot_img">Image</label>
+                  <input type="file" class="form-control" name="shoot_img[]" id="exampleFormControlInput1" required accept="image/*"  >
+                </div>
+
+                <div class="form-group">
+                  <label for="shoot_key">Key</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="key" required name="shoot_key">
+                </div>
+
+                  <!-- <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Submit Button</label> -->
+                    <div class="col-sm-10" style="margin-top: 15px;">
+                      <button type="submit" class="btn btn-primary" name="addshoots">Submit Form</button>
+                    </div>
+                  </div>
+
+                </form><!-- End General Form Elements -->
             </div>
           </div>
 
