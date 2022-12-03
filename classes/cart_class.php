@@ -12,7 +12,7 @@ require("../settings/db_class.php");
 
 class cart_class extends db_connection
 {
-	// Cart section
+	// Wedding Cart Section
 	public function deletewedding_cart($p_id,$c_id){
 
 		// Write query
@@ -128,7 +128,7 @@ class cart_class extends db_connection
 	public function getfrom_weddingcart($a){
 
 		// Write query
-		$sql =  "SELECT products.product_price*cart.qty ,cart.qty, products.product_id,products.product_title ,products.product_desc, products.product_image,products.product_price FROM cart  
+		$sql =  "SELECT wedding.wedding_price*cart.qty ,cart.qty, wedding.wedding_id,wedding.wedding_name ,wedding.wedding_price, wedding.wedding_label,wedding.wedding_img, wedding.wedding_key  FROM cart  
 		INNER JOIN products ON cart.p_id = products.product_id WHERE cart.c_id ='$a'";
 		// Return  
 		return $this->db_fetch_all($sql);

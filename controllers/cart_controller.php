@@ -2,162 +2,162 @@
 include("../classes/cart_class.php");
 
 // sanitize data
-function addcart_ctr($p_id,$ip_add,$c_id,$qty){
+function addweddingcart_ctr($p_id,$ip_add,$c_id,$qty){
 
     // Create an instance of the cart class. 
     $addcart= new cart_class();
 
-     return $addcart->add_cart($p_id,$ip_add,$c_id,$qty);
+     return $addcart->addwedding_cart($p_id,$ip_add,$c_id,$qty);
 
 }
 
-function selectallcart_ctr(){
+function selectallweddingcart_ctr(){
 
     // Create an instance of the cart class. 
     $selectcart= new cart_class();
 
-     return $selectcart->selectall_cart();
+     return $selectcart->selectallwedding_cart();
 
 }
 
-function selectonecart_ctr($p_id){
+function selectoneweddingcart_ctr($c_id){
 
     // Create an instance of the cart class. 
     $selectone= new cart_class();
 
-     return $selectone->selectone_cart($p_id);
+     return $selectone->selectonewedding_cart($c_id);
 
 }
 
-function deletecart_ctr($p_id,$c_id){
+function deleteweddingcart_ctr($p_id,$c_id){
 
     // Create an instance of the cart class. 
     $selectone= new cart_class();
 
-     return $selectone->delete_cart($p_id,$c_id);
+     return $selectone->deletewedding_cart($p_id,$c_id);
 
 }
 
-function increasecart_ctr($p_id,$c_id){
+function increaseweddingcart_ctr($p_id,$c_id){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->increase_cart($p_id,$c_id);
+     return $increasecart->increasewedding_cart($p_id,$c_id);
 
 }
 
-function decreasecart_ctr($p_id,$c_id){
+function decreaseweddingcart_ctr($p_id,$c_id){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->decrease_cart($p_id,$c_id);
+     return $increasecart->decreasewedding_cart($p_id,$c_id);
 
 }
 
-function getuser_cart_ctr($c_id){
+function getuser_weddingcart_ctr($c_id){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->getuser_cart($c_id);
+     return $increasecart->getuserwedding_cart($c_id);
 
 }
 
-function selectuser_ctr($c_id){
+function selectuserwedding_ctr($c_id){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->getuser_details($c_id);
+     return $increasecart->getuserwedding_details($c_id);
 
 }
 
-function deleteuser__from_cart_ctr($c_id){
+function deleteuser__from_weddingcart_ctr($c_id){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->delteuser_from_cart($c_id);
+     return $increasecart->delteuserwedding_from_cart($c_id);
 
 }
 
-function updatecart_qty_ctr($p_id,$c_id){
+function updatecartwedding_qty_ctr($p_id,$c_id){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->updatecart_quantity($p_id,$c_id);
+     return $increasecart->updatecartwedding_quantity($p_id,$c_id);
 
 }
 
-function count_cart_ctr($c_id){
+function count_weddingcart_ctr($c_id){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->countcart_quantity($c_id);
+     return $increasecart->countcartwedding_quantity($c_id);
 
 }
 
-function select_already_existing_carts_ctr($p_id,$c_id){
+function select_already_existing_weddingcarts_ctr($p_id,$c_id){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->select_already_existing_carts($p_id,$c_id);
+     return $increasecart->select_already_existing_weddingproducts($p_id,$c_id);
 
 }
 
-function get_from_cart_ctr($a){
+function get_from_weddingcart_ctr($a){
 
     // Create an instance of the cart class. 
     $increasecart= new cart_class();
 
-     return $increasecart->getfrom_cart($a);
+     return $increasecart->getfrom_weddingcart($a);
 
 }
 
-function insert_orders_ctr($customer_id,$invoice_no, $order_date){
+function insert_weddingorders_ctr($customer_id,$invoice_no, $order_date){
     $add = new cart_class();
-    return $add->insert_orders($customer_id,$invoice_no, $order_date);
+    return $add->insert_weddingorders($customer_id,$invoice_no, $order_date);
 }
 
-function insert_payment_ctr($amt,$customer_id,$order_id, $payment_date){
+function insert_weddingpayment_ctr($amt,$customer_id,$order_id, $payment_date){
     $add = new cart_class();
-    return $add->insert_payment($amt,$customer_id,$order_id, $payment_date);
+    return $add->insert_weddingpayment($amt,$customer_id,$order_id, $payment_date);
 }
 
-function get_order_id_ctr(){
+function get_weddingorder_id_ctr(){
     $add = new cart_class();
-    return $add->get_order_id();
+    return $add-> get_weddingorder_id();
 }
 
-function get_order_date_ctr(){
+function get_weddingorder_date_ctr(){
     $add = new cart_class();
-    return $add->get_order_date();
+    return $add->get_weddingorder_date();
 }
 
-function insert_orderdetails_ctr($order_id,$cart_id,$qty){
+function insert_weddingorderdetails_ctr($order_id,$wedding_id,$qty){
     $add = new cart_class();
-    return $add->insert_orderdetails($order_id,$cart_id,$qty);
+    return $add->insert_weddingorderdetails($order_id,$wedding_id,$qty);
 }
 
-function delete_after_pay_ctr($cid){
+function delete_after_weddingpay_ctr($cid){
     $add = new cart_class();
-    return $add->delete_after_pay_cart($cid);
+    return $add->delete_after_pay_weddingcart($cid);
 }
 
-function get_cart_details_ctr($c_id){
+function get_cart_weddingdetails_ctr($c_id){
     $add = new cart_class();
-    return $add->get_cart_details($c_id);
+    return $add->get_cart_weddingdetails($c_id);
 }
 
 
-function total_cart_price_ctr($a){
+function total_weddingcart_price_ctr($a){
     $get_total = new cart_class();
-    return $get_total->total_cart_price($a);
+    return $get_total->total_weddingcart_price($a);
 }
 
 
