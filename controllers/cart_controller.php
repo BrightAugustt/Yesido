@@ -2,6 +2,9 @@
 include("../classes/cart_class.php");
 
 // sanitize data
+
+
+
 function addweddingcart_ctr($p_id,$ip_add,$c_id,$qty){
 
     // Create an instance of the cart class. 
