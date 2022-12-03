@@ -1,13 +1,13 @@
 <?php
 
 session_start();
-// if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
-//       header('Location:../Login/login.php');
-//    };
+if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
+      header('Location:../Login/login.php');
+   };
 include("../controllers/wedding_controller.php");
 // // include("../settings/core.php");
-// $cid = $_SESSION['customer_id'];
-// // $count = count_cart_ctr($cid);
+$cid = $_SESSION['customer_id'];
+// $count = count_cart_ctr($cid);
 
 ?>
 
@@ -99,14 +99,13 @@ include("../controllers/wedding_controller.php");
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="wedding.php" class="dropdown-item">Weddings</a>
+                                    <a href="allwedding.php" class="dropdown-item">Weddings</a>
                                     <a href="allshoots.php" class="dropdown-item">Product Shoots</a>
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
-                            <a href="../Login/register.php" class="nav-item nav-link">Register</a>
                         </div>
-                        <a href="../Login/login.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login</a>
+                        <a href="index.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Logout</a>
                     </div>
                 </nav>
             </div>
@@ -129,17 +128,21 @@ include("../controllers/wedding_controller.php");
    
 
             <!-- Sidebar Start -->
+            
             <div class="col-lg-4">
                 <!-- Search Form Start -->
+                <div style="text-align:center;">
                 <div class="mb-5 text-center">
                     <div class="input-group">
                         <input type="text" class="form-control p-3" placeholder="Keyword">
                         <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
                     </div>
                 </div> 
+                </div>
                 <!-- Search Form End -->
                 <!-- Plain Text End -->
             </div>
+
             <!-- Sidebar End -->
         </div>
     </div>

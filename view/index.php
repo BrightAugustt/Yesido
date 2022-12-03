@@ -86,7 +86,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="wedding.php" class="dropdown-item">Weddings</a>
+                                    <a href="allwedding.php" class="dropdown-item">Weddings</a>
                                     <a href="allshoots.php" class="dropdown-item">Product Shoots</a>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@
 include("../controllers/cart_controller.php");
 session_start();
 $cid = $_SESSION['customer_id'];
-$count = count;
+$countwed =count_cart_ctr($cid);
 ?>
 
 
@@ -100,9 +100,8 @@ $count = count;
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
-                            <a href="../Login/register.php" class="nav-item nav-link">Register</a>
                         </div>
-                        <a href="../Login/login.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login</a>
+                        <a href="index.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Logout</a>
                     </div>
                 </nav>
             </div>

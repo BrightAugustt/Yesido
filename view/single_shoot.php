@@ -158,6 +158,7 @@ include("../controllers/shoot_controller.php");
                     <h1 class="display-3 text-uppercase mb-0"><?php print_r($shoot['shoot_name']);?></h1>
                 </div>
                 <p class="mb-4"><?php print_r ($shoot['shoot_label'])?></p>
+                <p class="mb-4">GHC <?php print_r ($shoot['shoot_price'])?></p>
                 <ul class="nav nav-pills justify-content-between mb-3">
                         <li class="nav-item w-50">
                             <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="cart.php">Book Service</a>

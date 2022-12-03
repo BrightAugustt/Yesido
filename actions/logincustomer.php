@@ -35,7 +35,7 @@ if(isset($_POST["login"])){
                 $_SESSION['user_role'] = $login['user_role'];
                 $_SESSION['customer_id'] = $login['customer_id'];
                 // redirect to login
-                   header('Location:../view/all_product.php');
+                   header('Location:../view/allwedding.php');
             }
             
 

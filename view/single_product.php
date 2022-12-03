@@ -100,9 +100,8 @@ include("../controllers/wedding_controller.php");
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
-                            <a href="../Login/register.php" class="nav-item nav-link">Register</a>
                         </div>
-                        <a href="../Login/login.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login</a>
+                        <a href="index.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Logout</a>
                     </div>
                 </nav>
             </div>
@@ -149,7 +148,7 @@ include("../controllers/wedding_controller.php");
         <div class="row gx-5">
             <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 rounded" src="../images/images/wedding/?php echo ($wedding['wedding_img'])?>" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100 rounded" src="../images/images/wedding/<?php echo ($wedding['wedding_img'])?>" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-7">
@@ -158,6 +157,7 @@ include("../controllers/wedding_controller.php");
                     <h1 class="display-3 text-uppercase mb-0"><?php print_r($wedding['wedding_name']);?></h1>
                 </div>
                 <p class="mb-4"><?php print_r ($wedding['wedding_label'])?></p>
+                <p class="mb-4">GHC <?php print_r ($wedding['wedding_price'])?></p>
                 <ul class="nav nav-pills justify-content-between mb-3">
                         <li class="nav-item w-50">
                             <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="cart.php">Book Service</a>

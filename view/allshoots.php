@@ -100,14 +100,13 @@ include("../controllers/shoot_controller.php");
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="wedding.php" class="dropdown-item">Weddings</a>
+                                    <a href="allwedding.php" class="dropdown-item">Weddings</a>
                                     <a href="allshoots.php" class="dropdown-item">Product Shoots</a>
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
-                            <a href="../Login/register.php" class="nav-item nav-link">Register</a>
                         </div>
-                        <a href="../Login/login.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login</a>
+                        <a href="index.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Logout</a>
                     </div>
                 </nav>
             </div>
