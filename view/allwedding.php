@@ -1,9 +1,23 @@
+<?php
+
+session_start();
+// if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
+//       header('Location:../Login/login.php');
+//    };
+include("../controllers/wedding_controller.php");
+// // include("../settings/core.php");
+// $cid = $_SESSION['customer_id'];
+// // $count = count_cart_ctr($cid);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Ye</title>
+    <title>YesIDO</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -135,11 +149,17 @@
             <h5 class="text-primary text-uppercase">The Team</h5>
             <h1 class="display-3 text-uppercase mb-0">Expert Trainers</h1>
         </div>
+        <?php
+        $wedding= selectall_wedding_ctr();
+            foreach($wedding as $item){ 
+        ?>
         <div class="row g-5">
             <div class="col-lg-4 col-md-6">
                 <div class="team-item position-relative">
                     <div class="position-relative overflow-hidden rounded">
-                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
+                        <a href="single_product.php?wedding_id=<?php echo($item['wedding_id'])?>">
+                        <img class="img-fluid w-100" src="../images/wedding/" alt="lmg">
+                        </a>
                         <div class="team-overlay">
                             <div class="d-flex align-items-center justify-content-start">
                                 <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-twitter"></i></a>
@@ -149,30 +169,19 @@
                         </div>
                     </div>
                     <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(34, 36, 41, .9);">
-                        <h5 class="text-uppercase text-light">John Deo</h5>
-                        <p class="text-uppercase text-secondary m-0">Trainer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team-item position-relative">
-                    <div class="position-relative overflow-hidden rounded">
-                        <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(34, 36, 41, .9);">
-                        <h5 class="text-uppercase text-light">James Taylor</h5>
-                        <p class="text-uppercase text-secondary m-0">Trainer</p>
+                        <h5 class="text-uppercase text-light"><?php echo($item['wedding_name'])?></h5>
+                        <p class="text-uppercase text-secondary m-0">GHC<?php echo($item['wedding_price'])?></p>
+                        <p class="text-uppercase text-secondary m-0"><?php echo($item['wedding_label'])?></p>
+                        <input type="hidden" name="p_id" value="<?php echo $item["product_id"]?>">
+                <input type="hidden" name="qty" value="1">
+
                     </div>
                 </div>
             </div>
         </div>
+        <?php
+            }
+        ?>
     </div>
 
     <!-- Footer Start -->
