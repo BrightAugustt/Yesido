@@ -220,7 +220,7 @@ $countwed =count_shootcart_ctr($cid);
     </p>
 
 		<div class="col-md-6">
-			<form class="cc-form">
+			<form class="cc-form" id="paymentForm">
 			<div class="clearfix">
 			<div class="form-group form-group-cc-number">
 			<label>Email</label>
@@ -240,7 +240,7 @@ $countwed =count_shootcart_ctr($cid);
 			</div>
     			
             
-            <script type="text/javascript">
+            <script>
 	
                     const paymentForm = document.getElementById('paymentForm');
                     paymentForm.addEventListener("submit", payWithPaystack, false);
