@@ -80,7 +80,7 @@
                       <button class="btn btn-primary w-100" type="submit" name="login">Login</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Don't have an account? <a href="register.php">Log in</a></p>
+                      <p class="small mb-0">Don't have an account? <a href="register.php">Click to register</a></p>
                     </div>
                   </form>
                   <?php

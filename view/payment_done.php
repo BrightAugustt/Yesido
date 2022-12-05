@@ -106,7 +106,8 @@ $countwed =count_shootcart_ctr($cid);
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
                             <a href="../Login/register.php" class="nav-item nav-link">Register</a>
                         </div>
-                        <a href="../Login/login.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login</a>
+                        <?php echo "<li> <a href='../actions/logout.php' onclick='onsignout()' ><i class='dropdown-item'></i> Logout</a> </li>"; ?>
+                        <a href="../Login/login.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Logout</a>
                     </div>
                 </nav>
             </div>
