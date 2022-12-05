@@ -1,7 +1,7 @@
 <?php
-if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
-    header('Location:../Login/login.php');
- };
+// if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
+//     header('Location:../Login/login.php');
+//  };
 include("../controllers/cart_controller.php");
 session_start();
 $cid = $_SESSION['customer_id'];
@@ -231,7 +231,7 @@ $countwed =count_shootcart_ctr($cid);
 				<input readonly class="form-control" value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>" id="amount5" type="number">
 			</div>
 		    </div>								
-			<button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()" >Proceed Payment</button>
+			<button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()"  >Proceed Payment</button>
 			</form>
 				</div>
 				<div class="clearfix"></div>
@@ -240,37 +240,66 @@ $countwed =count_shootcart_ctr($cid);
 			</div>
     			
             
-<script type="text/javascript">
-        function payWithPaystack() {
+            <script type="text/javascript">
+	
+                    const paymentForm = document.getElementById('paymentForm');
+                    paymentForm.addEventListener("submit", payWithPaystack, false);
+                    function payWithPaystack() {
+                    event.preventDefault();
+
+                    let handler = PaystackPop.setup({
+                        key: 'pk_test_057c9db199308fc4166825e8b57cc8510a316319', // Replace with your public key
+                        email: document.getElementById("email").value,
+                        amount: document.getElementById("amount5").value * 100,
+                        ref: ''+Math.floor((Math.random() * 1000000000) + 1),
+                        currency:'GHS',
+
+                        // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                        // label: "Optional string that replaces customer email"
+                        onClose: function(){
+                        alert('Window closed.');
+                        },
+                        callback: function(response){
+                        
+                        let message = 'Payment complete! Reference: '+ response.reference
+                        
+                        console.log(response.status);
+                        
+                            email = document.getElementById("email").value;
+                            amount5 = document.getElementById("amount5").value;
+                            console.log(email);
+                            console.log(amount5);
+
+                        dataString = 'email='+ email +'&amount5='+amount5+ '&ref=' + response.reference + '&res=' + response.status;
+                    if (response.status=='success') {
+                        $.ajax({
+                            type:"POST",
+                            url:"../actions/process.php",
+                            data: dataString,
+                            cache:false,
+                            success:function(result){
+                            alert(result);
+                            window.location="payment_done.php";
+                            }
 
 
-            event.preventDefault();
-            let handler = PaystackPop.setup({
-                key: 'pk_live_bd5356607a881f3a0d6843b75d3172b74b9675cd',
-                // key: 'pk_test_2f4f689442f4751d03e7f9d680a26a38bba21720', // Replace with your public key
-                email: document.getElementById("email-address").value,
-                amount: document.getElementById("amount").value * 100,
-                ref: '' + Math.floor((Math.random() * 1000000000) + 1),
-                currency: 'GHS',
-                onClose: function() {
-                    alert('Window closed.');
-                },
-                callback: function(response){
-
-                    alert("payment have been made"+ response.reference);
-                    $.ajax({
-                    url:"../actions/process.php?reference="+ response.reference,
-                    method:'GET',
-                    success: function (response){
-                        document.getElementById("stripe-login").submit();
+                        });
+                        }
+                    
                     }
 
-            });
-    }
-  });
-            handler.openIframe();
-        }
-</script>
+
+
+
+
+
+                    });
+
+                    handler.openIframe();
+                    }
+
+
+                </script>
 
 
     <!-- Footer Start -->

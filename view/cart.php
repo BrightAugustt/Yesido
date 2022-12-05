@@ -246,7 +246,7 @@ $countwed =count_shootcart_ctr($cid);
      GHC <?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>
     </p>
     <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">
-      <a href="payment.php" type="submit">Proceed To Checkout</a>
+      <a href="payment.php"  class="pay2" type="submit">Proceed To Checkout</a>
     </button>
   </div>
 </div>
