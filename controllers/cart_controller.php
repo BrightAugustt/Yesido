@@ -132,9 +132,9 @@ function insert_weddingpayment_ctr($amt,$customer_id,$order_id, $payment_date){
     return $add->insert_weddingpayment($amt,$customer_id,$order_id, $payment_date);
 }
 
-function get_weddingorder_id_ctr(){
+function get_weddingorder_id_ctr($invoice_no){
     $add = new cart_class();
-    return $add-> get_weddingorder_id();
+    return $add-> get_weddingorder_id($invoice_no);
 }
 
 function get_weddingorder_date_ctr(){
@@ -294,9 +294,9 @@ function insert_shootpayment_ctr($amt,$customer_id,$order_id, $payment_date){
     return $add->insert_shootpayment($amt,$customer_id,$order_id, $payment_date);
 }
 
-function get_shootorder_id_ctr(){
+function get_shootorder_id_ctr($invoice_no){
     $add = new cart_class();
-    return $add-> get_shootorder_id();
+    return $add-> get_shootorder_id($invoice_no);
 }
 
 function get_shootorder_date_ctr(){

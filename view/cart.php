@@ -6,6 +6,7 @@ if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and em
 include("../controllers/cart_controller.php");
 // session_start();
 $cid = $_SESSION['customer_id'];
+echo $cid;
 $countwed =count_weddingcart_ctr($cid);
 $countwed =count_shootcart_ctr($cid);
 

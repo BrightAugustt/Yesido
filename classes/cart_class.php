@@ -151,8 +151,8 @@ class cart_class extends db_connection
 		return $this->db_query($sql);
 	}
 
-	function get_weddingorder_id(){
-		$sql="SELECT order_id from orders ORDER BY order_id DESC LIMIT 1";
+	function get_weddingorder_id($invoice_no){
+		$sql="SELECT `order_id` FROM `orders` WHERE `invoice_no`='$invoice_no'";
 		return $this->db_fetch_one($sql);
 	
 	}
@@ -165,11 +165,11 @@ class cart_class extends db_connection
 
 	function insert_weddingorderdetails($order_id,$wedding_id,$qty){
 
-		$sql="INSERT INTO `orderdetails`(`order_id`,`wedding_id`, `qty`) 
-		VALUES ('$order_id','$wedding_id','$qty')";
-		
+		$sql="INSERT INTO `orderdetails`(`order_id`, `wedding_id`, `qty`) VALUES ('$order_id','$wedding_id','$qty')";
 		return $this->db_query($sql);
 	}
+
+	
 
 	function delete_after_pay_weddingcart($cid){
 		$sql = "DELETE FROM `cart` WHERE `c_id`='$cid'";
@@ -320,7 +320,7 @@ class cart_class extends db_connection
 	public function insert_shootorders($customer_id,$invoice_no, $order_date){
 
 		// Write query
-		$sql =  "INSERT INTO `orders`(`customer_id`, `invoice_no`, `order_date`, `order_status`) VALUES ('$customer_id','$invoice_no','$order_date','success')";
+		$sql =  "INSERT INTO `shootorders`(`customer_id`, `invoice_no`, `order_date`, `order_status`) VALUES ('$customer_id','$invoice_no','$order_date','success')";
 		// Return  
 		return $this->db_query($sql);
 	}
@@ -328,27 +328,28 @@ class cart_class extends db_connection
 	public function insert_shootpayment($amt,$customer_id,$order_id, $payment_date){
 
 		// Write query
-		$sql =  "INSERT INTO `payment`(`amt`, `customer_id`, `order_id`, `currency`, `payment_date`) 
+		$sql =  "INSERT INTO `shootpayment`(`amt`, `customer_id`, `order_id`, `currency`, `payment_date`) 
         VALUES ('$amt','$customer_id','$order_id','GHS','$payment_date')";
 		// Return  
 		return $this->db_query($sql);
 	}
 
-	function get_shootorder_id(){
-		$sql="SELECT order_id from orders ORDER BY order_id DESC LIMIT 1";
+	function get_shootorder_id($invoice_no){
+		$sql="SELECT order_id from shootorders where `invoice_no`='$invoice_no'";
 		return $this->db_fetch_one($sql);
+		
 	
 	}
 
 	function get_shootorder_date(){
-		$sql="SELECT order_date from orders ORDER BY order_id DESC LIMIT 1";
+		$sql="SELECT order_date from shootorders ORDER BY order_id DESC LIMIT 1";
 		return $this->db_fetch_one($sql);
 	}
 
 
 	function insert_shootorderdetails($order_id,$shoot_id,$qty){
 
-		$sql="INSERT INTO `orderdetails`(`order_id`,`shoot_id`, `qty`) 
+		$sql="INSERT INTO `shootdetails`(`order_id`,`shoot_id`, `qty`) 
 		VALUES ('$order_id','$shoot_id','$qty')";
 		
 		return $this->db_query($sql);

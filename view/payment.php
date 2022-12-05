@@ -1,13 +1,17 @@
 <?php
-// if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
-//     header('Location:../Login/login.php');
-//  };
-include("../controllers/cart_controller.php");
 session_start();
+if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
+    header('Location:../Login/login.php');
+ };
+include("../controllers/cart_controller.php");
 $cid = $_SESSION['customer_id'];
+echo $cid;
 $countwed =count_weddingcart_ctr($cid);
+$wed=selectuserwedding_ctr($_SESSION['customer_id']);
+$shot=selectusershoot_ctr($_SESSION['customer_id']);
 $countwed =count_shootcart_ctr($cid);
 $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
+$datas = get_shootorder_id_ctr($_SESSION['customer_id']);
 ?>
 
 
@@ -17,7 +21,7 @@ $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
 
 <head>
     <meta charset="utf-8">
-    <title>GYMSTER - Gym HTML Template</title>
+    <title>YesIDO</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -194,7 +198,7 @@ $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
       <td><?php echo($item['shoot_name']) ?></td>
       <td><?php echo('GHC'); echo($item['shoots.shoot_price*shootcart.qty']); ?></td>
       <td>
-      <form action="../functions/remove_from_cart.php" method="POST">
+      <form action="../actions/remove_shoots_from_cart.php" method="POST">
         <input type="hidden" name="p_id" value="<?php echo($item['shoot_id']);?>" >
         <!-- <button name="deleteCart" ></button> -->
         <input type="submit" name="deleteCart" class='btn btn-outline-danger' value="Delete Order">
@@ -223,11 +227,37 @@ $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
     </p>
 
 		<div class="col-md-6">
-			<form class="cc-form" id="paymentForm">
+
+
+        <form class="cc-form">
+			<div class="clearfix">
+			<div class="form-group form-group-cc-number">
+				<label>Email</label>
+					<input class="form-control" id="email" placeholder="example@gmail.com" type="text"><span class="cc-card-icon" value="<?php //echo $total[""]?>" ></span>
+				</div>
+				<div class="form-group form-group-cc-cvc">
+					<label>Total Amount</label>
+					<input readonly class="form-control" value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"] ?>">
+					</div>
+				</div>						
+				<button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()" >Proceed Payment</button>
+		</form>
+			<!-- <form class="cc-form" id="paymentForm">
 			<div class="clearfix">
 			<div class="form-group form-group-cc-number">
 			<label>Email</label>
-			<input class="form-control" id="email" placeholder="example@gmail.com" type="text"><span class="cc-card-icon" value="<?php //echo $total[""]?>" ></span>
+			<input class="form-control" id="cname" placeholder="example@gmail.com" type="text" ><span class="cc-card-icon" value="<?php $wed['customer_name']?>" ></span>
+            <input class="form-control" id="cname" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php $wed['customer_name']?>" ></span>
+            <input class="form-control" id="cname" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php $shot['customer_name']?>" ></span>
+			</div>
+            <div class="form-group form-group-cc-number">
+			
+			<input class="form-control" id="email" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php echo $wed['customer_email']?>" ></span>
+            <input class="form-control" id="email" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php echo $shot['customer_email']?>" ></span>
+			</div>
+            <div class="form-group form-group-cc-number">
+			<input class="form-control" id="wid" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php echo $wed['customer_id']?>" ></span>
+            <input class="form-control" id="sid" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php echo $shot['customer_id']?>" ></span>
 			</div>
 			<div class="form-group form-group-cc-cvc">
 			    <label>Total Amount</label>
@@ -235,7 +265,27 @@ $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
 			</div>
 		    </div>								
 			<button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()">Proceed Payment</button>
-			</form>
+			</form> -->
+
+            <!-- <form id="paymentForm" method='post'>
+            <div class="form-group">
+
+                <input type="email" id="email" hidden required value="<?php echo $data['customer_email'] ?>" />
+            </div>
+            <div class="form-group">
+                <input type="number" id="amount" hidden required value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]?>" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="cname" hidden value="<?php echo $data['customer_name'] ?>" />
+            </div>
+            <div class="form-group">
+                <input type="number" id="cid" hidden value="<?php echo $data['customer_id'] ?>" />
+            </div>
+
+
+            <button type="submit" onclick="payWithPaystack()"> Pay </button>
+
+        </form> -->
 				</div>
 				<div class="clearfix"></div>
 				</div>
@@ -249,10 +299,10 @@ $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
 
             event.preventDefault();
             let handler = PaystackPop.setup({
-                key: 'pk_test_839cab168cfb81723db8ebef98f189d3bbc66f22',
+                key: 'pk_test_057c9db199308fc4166825e8b57cc8510a316319',
                 // key: 'pk_test_2f4f689442f4751d03e7f9d680a26a38bba21720', // Replace with your public key
                 email: document.getElementById("email").value,
-                amount: document.getElementById("amount5").value * 100,
+                amount: document.getElementById("amount").value * 100,
                 ref: '' + Math.floor((Math.random() * 1000000000) + 1),
                 currency: 'GHS',
                 // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
@@ -268,6 +318,7 @@ $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
                     method:'GET',
                     success: function (response){
                         document.getElementById("stripe-login").submit();
+                        window.location="payment_done.php";
                     }
 
             });
@@ -277,29 +328,11 @@ $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
         }
     </script>
 
-<form id="paymentForm" method='post'>
-            <div class="form-group">
-
-                <input type="email" id="email" hidden required value="<?php echo $data['customer_email'] ?>" />
-            </div>
-            <div class="form-group">
-                <input type="number" id="amount" hidden required value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>" />
-            </div>
-            <div class="form-group">
-                <input type="text" id="cname" hidden value="<?php echo $data['customer_name'] ?>" />
-            </div>
-            <div class="form-group">
-                <input type="number" id="cid" hidden value="<?php echo $data['customer_id'] ?>" />
-            </div>
-
-
-            <button type="submit" onclick="payWithPaystack()"> Pay </button>
-
-        </form>
 
 
 
 
+<script src="https://js.paystack.co/v1/inline.js"></script>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary px-5 mt-5">
