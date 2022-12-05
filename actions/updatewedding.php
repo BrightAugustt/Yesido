@@ -11,7 +11,7 @@ if(isset($_POST["updatewedding"])){
     $img =$_POST['wedding_img'];
 
 
-    $output_dir = "../images/wedding/";/* Path for file upload */
+    $output_dir = "../images/images/wedding/";/* Path for file upload */
 	$RandomNum   = time();
 	$ImageName      = str_replace(' ','-',strtolower($_FILES['wedding_img']['name'][0]));
 	$ImageType      = $_FILES['wedding_img']['type'][0];
@@ -22,18 +22,13 @@ if(isset($_POST["updatewedding"])){
 	$ret[$NewImageName]= $output_dir.$NewImageName;
     
     if(empty($ImageName)!=TRUE){
-        unlink(("../images/wedding/".$img));
-        move_uploaded_file($_FILES["image"]["tmp_name"][0],$output_dir."/".$NewImageName);
-        if(updateWedding_ctr($wedding_id,$wedding_name,$wedding_price,$wedding_label,$wedding_img,$wedding_key)==TRUE){
-            header('Location:../Admin/view_weddings.php');
+        
+        unlink("../images/product/".$img);
+        move_uploaded_file($_FILES["product_image"]["tmp_name"][0],$output_dir."/".$NewImageName );
+        if(updatewedding_img_ctr($wedding_id,$NewImageName)==TRUE){
+            header('Location:../admin/viewproduct.php');
         }else{
-            echo "Failed to delete";
-        }
-    }else{
-        if(updateWedding_ctr($wedding_id,$wedding_name,$wedding_price,$wedding_label,$wedding_img,$wedding_key)==TRUE){
-            header('Location:../Admin/view_weddings.php');
-        }else{
-            echo "Failed to delete image";
+            echo "unable to edit image";
         }
     }
 }else{

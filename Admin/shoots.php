@@ -125,8 +125,8 @@ include("../controllers/shoot_controller.php");
         </a>
         <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="shoots.php" class="active">
-              <i class="bi bi-circle"></i><span>Add shoots</span>
+            <a href="weddings.php" class="active">
+              <i class="bi bi-circle"></i><span>Add Wedding</span>
             </a>
           </li>
           <li>
@@ -144,8 +144,8 @@ include("../controllers/shoot_controller.php");
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="view_shoots.php">
-              <i class="bi bi-circle"></i><span>shoots</span>
+            <a href="view_weddings.php">
+              <i class="bi bi-circle"></i><span>Weddings</span>
             </a>
           </li>
           <li>

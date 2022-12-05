@@ -150,7 +150,6 @@ include("../controllers/shoot_controller.php");
     <!-- Shoots Display -->
     <div class="container-fluid p-5">
         <div class="mb-5 text-center">
-            <h5 class="text-primary text-uppercase">The Team</h5>
             <h1 class="display-3 text-uppercase mb-0">Shoots Category</h1>
         </div>
       

@@ -118,7 +118,7 @@ include("../controllers/shoot_controller.php");
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.php">
+        <a class="nav-link collapsed" href="admin.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -220,7 +220,7 @@ include("../controllers/shoot_controller.php");
                           echo "<td>".$shoot[$i]['shoot_key']."<td>";
 
                           // Edit & Delete form 
-                          echo "<th><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
+                          echo "<th><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal$i'>
                           Update
                         </button><th>";
                           echo "<th><form action='../actions/deleteshoots.php'  method='POST'>
@@ -229,7 +229,7 @@ include("../controllers/shoot_controller.php");
                           
                           echo "<tr>";
                          echo 
-                         "<div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                         "<div class='modal fade' id='exampleModal$i' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                          <div class='modal-dialog' role='document'>
                            <div class='modal-content'>
                              <div class='modal-header'>
@@ -263,7 +263,7 @@ include("../controllers/shoot_controller.php");
 
                                  <div class='form-group'>
                                    <label for='recipient-name' class='col-form-label'>shoot Image:</label>
-                                   <input type='file' class='form-control' id='shoot_img' name='shoot_img'  required placeholder= '".$shoot[$i]['shoot_img']."'>
+                                   <input type='hidden' class='form-control' id='shoot_img' name='shoot_img'  required placeholder= '".$shoot[$i]['shoot_img']."'>
                                    <input type='hidden' name='shoot_id'  value= '".$shoot[$i]['shoot_id']."'>
                                  </div>
 
@@ -295,16 +295,60 @@ include("../controllers/shoot_controller.php");
 
 </table>
 
-          
-          <?php
-            }
-            displayproductCtr();
-          ?>
+<?php  
 
+
+echo
+               
+" 
+                <div class='modal fade' id='modal2' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+               <div class='modal-dialog' role='document'>
+                 <div class='modal-content'>
+                   <div class='modal-header'>
+                     <h5 class='modal-title' id='exampleModalLabel'>New message</h5>
+                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                       <span aria-hidden='true'>&times;</span>
+                     </button>
+                   </div>
+                   <div class='modal-body'>
+                     <form>
+                       <div class='form-group'>
+                         <label for='recipient-name' class='col-form-label'>Recipient:</label>
+                         <input type='text' class='form-control' id='recipient-name'>
+                       </div>
+                       <div class='form-group'>
+                         <label for='message-text' class='col-form-label'>Message:</label>
+                         <textarea class='form-control' id='message-text'></textarea>
+                       </div>
+
+                       <div class='form-group'>
+                         <label for='message-text' class='col-form-label'>Message:</label>
+                         <textarea class='form-control' id='message-text'></textarea>
+                       </div>
+                     </form>
+                   </div>
+                   <div class='modal-footer'>
+                     <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                     <button type='button' class='btn btn-primary'>Send message</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
+               ";
+
+?>;
+
+
+   
 <script>
-  $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
+$('#exampleModal$i').on('shown.bs.modal', function (event) {
+$('#myInput').trigger('focus')
 })
+$('modal2').on('shown.bs.modal', function (event) {
+$('#myInput').trigger('focus')
+})
+
+
 </script>
 
 

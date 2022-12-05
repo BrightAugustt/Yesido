@@ -4,7 +4,7 @@ if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and em
       header('Location:../Login/login.php');
    };
 include("../controllers/cart_controller.php");
-session_start();
+// session_start();
 $cid = $_SESSION['customer_id'];
 $countwed =count_weddingcart_ctr($cid);
 $countwed =count_shootcart_ctr($cid);
@@ -119,7 +119,7 @@ $countwed =count_shootcart_ctr($cid);
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">Weddings</h1>
+                <h1 class="display-2 text-uppercase text-white mb-md-4">Cart</h1>
             </div>
         </div>
     </div>
@@ -246,7 +246,7 @@ $countwed =count_shootcart_ctr($cid);
      GHC <?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>
     </p>
     <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">
-      <a href="class.php" class="pay2" type="submit">Proceed To Checkout</a>
+      <a href="payment.php" type="submit">Proceed To Checkout</a>
     </button>
   </div>
 </div>
