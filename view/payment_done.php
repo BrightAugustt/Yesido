@@ -1,15 +1,14 @@
 <?php
-
-session_start();
 if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and $_SESSION['user_role']!= 1)   {
-      header('Location:../Login/login.php');
-   };
-include("../controllers/shoot_controller.php");
-// // include("../settings/core.php");
-// $cid = $_SESSION['customer_id'];
-// // $count = count_cart_ctr($cid);
-
+    header('Location:../Login/login.php');
+ };
+include("../controllers/cart_controller.php");
+session_start();
+$cid = $_SESSION['customer_id'];
+$countwed =count_weddingcart_ctr($cid);
+$countwed =count_shootcart_ctr($cid);
 ?>
+
 
 
 <!DOCTYPE html>
@@ -17,7 +16,7 @@ include("../controllers/shoot_controller.php");
 
 <head>
     <meta charset="utf-8">
-    <title>YesIDO</title>
+    <title>GYMSTER - Gym HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -100,14 +99,14 @@ include("../controllers/shoot_controller.php");
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="allwedding.php" class="dropdown-item">Weddings</a>
+                                    <a href="wedding.php" class="dropdown-item">Weddings</a>
                                     <a href="allshoots.php" class="dropdown-item">Product Shoots</a>
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
-                            <a href="cart.php" class="nav-item nav-link">Cart</a>
+                            <a href="../Login/register.php" class="nav-item nav-link">Register</a>
                         </div>
-                        <a href="index.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Logout</a>
+                        <a href="../Login/login.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login</a>
                     </div>
                 </nav>
             </div>
@@ -115,87 +114,20 @@ include("../controllers/shoot_controller.php");
     </div>
     <!-- Header End -->
 
-
     <!-- Hero Start -->
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">Weddings</h1>
+                <h1 class="display-2 text-uppercase text-white mb-md-4">Confirm Payment</h1>
+                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+                <a href="allwedding.php" class="btn btn-light py-md-3 px-md-5">Wedding</a>
             </div>
         </div>
     </div>
     <!-- Hero End -->
 
-
-   
-            <!-- <div style="text=center;"> -->
-            <!-- Sidebar Start -->
-            <div class="col-lg-4">
-                <!-- Search Form Start -->
-                <div class="mb-5">
-                    <div class="input-group">
-                        <input type="text" class="form-control p-3" placeholder="Keyword">
-                        <button class="btn btn-primary px-4" name="search"><i class="bi bi-search"></i></button>
-                    </div>
-                </div> 
-                <!-- Search Form End -->
-                <!-- Plain Text End -->
-            </div>
-            </div>
-            <!-- Sidebar End -->
-        </div>
-    </div>
-
-
-    <!-- Shoots Display -->
-    <div class="container-fluid p-5">
-        <div class="mb-5 text-center">
-            <h5 class="text-primary text-uppercase">The Team</h5>
-            <h1 class="display-3 text-uppercase mb-0">Shoots Category</h1>
-        </div>
-      
-        <div class="row g-5">
-        <?php
-        $shoot= selectall_shoot_ctr();
-            foreach($shoot as $item){ 
-        ?>
-            <div class="col-lg-4 col-md-6">
-                <form  method="POST" action="../actions/addshoots_to_cart.php">
-                <div class="team-item position-relative">
-                    <div class="position-relative overflow-hidden rounded">
-                        <a href="single_shoot.php?shoot_id=<?php echo ($item['shoot_id'])?>">
-                        <img class="img-fluid w-100" src="../images/images/shoots/<?php echo($item['shoot_img']) ?>" alt="lmg">
-                        </a>
-                        <div class="team-overlay">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="single_shoot.php?shoot_id=<?php echo($item['shoot_id'])?>"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-light btn-square rounded-circle mx-1" href="cart.php"><i class="fa fa-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(34, 36, 41, .9);">
-                        <h5 class="text-uppercase text-light"><?php echo($item['shoot_name'])?></h5>
-                        <p class="text-uppercase text-secondary m-0">GHC <?php echo($item['shoot_price'])?></p>
-                        <p class="text-uppercase text-secondary m-0"><?php echo($item['shoot_label'])?></p>
-                        <ul class="nav nav-pills justify-content-between mb-3">
-                        </ul>
-                        <input type="hidden" name="p_id" value="<?php echo($item['shoot_id'])?>">
-                        <input type="hidden" name="qty" value="1">
-                        <button type="submit" name="addToCart">Book Service</button>
-                    </div>
-                </div>
-                </form>
-            </div>
-            <?php
-            }
-       
-        ?>
-        </div>
-    </div>
-    
-
     <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-secondary px-5 mt-5">
+    <div class="container-fluid bg-dark text-secondary px-5 mt-5">
         <div class="row gx-5">
             <div class="col-lg-8 col-md-6">
                 <div class="row gx-5">
@@ -203,15 +135,15 @@ include("../controllers/shoot_controller.php");
                         <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
                         <div class="d-flex mb-2">
                             <i class="bi bi-geo-alt text-primary me-2"></i>
-                            <p class="mb-0">Haatso</p>
+                            <p class="mb-0">123 Street, New York, USA</p>
                         </div>
                         <div class="d-flex mb-2">
                             <i class="bi bi-envelope-open text-primary me-2"></i>
-                            <p class="mb-0">YesIDO@gmail.com</p>
+                            <p class="mb-0">info@example.com</p>
                         </div>
                         <div class="d-flex mb-2">
                             <i class="bi bi-telephone text-primary me-2"></i>
-                            <p class="mb-0">0544262308</p>
+                            <p class="mb-0">+012 345 67890</p>
                         </div>
                         <div class="d-flex mt-4">
                             <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
@@ -225,9 +157,36 @@ include("../controllers/shoot_controller.php");
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
                             <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
                             <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                         </div>
                     </div>
+                    <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                        <h4 class="text-uppercase text-light mb-4">Popular Links</h4>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                            <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-5">
+                    <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
+                    <h6 class="text-uppercase text-white">Subscribe Our Newsletter</h6>
+                    <p class="text-light">Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-white p-3" placeholder="Your Email">
+                            <button class="btn btn-dark">Sign Up</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -236,7 +195,7 @@ include("../controllers/shoot_controller.php");
         <div class="row gx-5">
             <div class="col-lg-8">
                 <div class="py-lg-4 text-center">
-                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">YesIDO</a>. All Rights Reserved.</p>
+                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">Your Site Name</a>. All Rights Reserved.</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -245,7 +204,7 @@ include("../controllers/shoot_controller.php");
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
     <!-- Footer End -->
 
 
