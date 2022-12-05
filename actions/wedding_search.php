@@ -1,13 +1,13 @@
 <?php
 	include ("../controllers/wedding_controller.php");
     
-    $product_brand;
+    $wedding_key;
 		//This file gets the search data and pass it in the search_product controller
-	if(isset($_POST['submit'])){
-	$product_brand = $_POST['search'];
+	if(isset($_POST['search'])){
+	$wedding_key = $_POST['search'];
 			
-			$product_brand_search=search($product_brand);
+			$wedding_key=searchwedding_ctr($wedding_key);
 
-			header('Location: ../view/product_search_results.php?product_id='.$product_brand);
+			header('Location: ../view/wedding_search_results.php?wedding_id='.$wedding_key);
 		}
 ?>

@@ -135,7 +135,7 @@ include("../controllers/shoot_controller.php");
                 <div class="mb-5">
                     <div class="input-group">
                         <input type="text" class="form-control p-3" placeholder="Keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-primary px-4" name="search"><i class="bi bi-search"></i></button>
                     </div>
                 </div> 
                 <!-- Search Form End -->
