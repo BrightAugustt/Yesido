@@ -369,7 +369,7 @@ class cart_class extends db_connection
 	}
 
 	function total_shootcart_price($a){
-        $sql = "SELECT SUM(cart.qty*shoots.shoot_price) FROM `shootcart` INNER JOIN `shoots` ON cart.p_id = shoots.shoots_id WHERE cart.c_id ='$a'";
+        $sql = "SELECT SUM(shootcart.qty*shoots.shoot_price) FROM `shootcart` INNER JOIN `shoots` ON shootcart.p_id = shoots.shoot_id WHERE shootcart.c_id ='$a'";
     
         return $this->db_fetch_one($sql);
 

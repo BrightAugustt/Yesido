@@ -215,6 +215,39 @@ $countwed =count_shootcart_ctr($cid);
   </tbody>
 </table>
 
+<div class="card border-dark mb-3" style="max-width: 18rem; margin: 0px 100px auto;">
+  <div class="card-header">Cart Summary</div>
+  <div class="card-body text-dark">
+  <h5 class="card-title">Subtotal</h5>
+  <?php
+    $get = get_from_weddingcart_ctr($cid);
+    $shoot = get_from_shootcart_ctr($cid);
+    $total = total_weddingcart_price_ctr($cid);
+    $shootT = total_shootcart_price_ctr($cid);
+    foreach ($get as $item){
+        echo $item['wedding.wedding_price*cart.qty'];
+    ?>
+    <?php
+    foreach ($shoot as $item){
+        
+    ?>
+   
+    <p class="card-text">
+    <?php
+    echo $item['shoots.shoot_price*shootcart.qty'];
+    ?>
+     <?php } ?>
+     <?php } ?>
+    
+     <h5>Total</h5>
+     GHC <?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>
+    </p>
+    <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">
+      <a href="class.php" class="pay2" type="submit">Proceed To Checkout</a>
+    </button>
+  </div>
+</div>
+
 <!-- Script to handle qyt changes -->
 <script>
                 function loadDoc(id){

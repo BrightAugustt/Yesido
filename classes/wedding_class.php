@@ -63,12 +63,16 @@ class wedding_class extends db_connection
 	}
 
 
-	// Cart
-	 public function cart_count($wedding_id,$ip){
-		
-		// write query
-		$sql="SELECT SUM(`qty`) as `cart_num` FROM `cart` WHERE `wedding_id`='$wedding_id' ";
-		return $this->db_fetch_one($sql);
+	// search
+	public function search_wedding($wedding_key){
+		$sql = "SELECT * FROM `wedding` WHERE `wedding_key` LIKE '%$wedding_key%'";
+		return $this->db_fetch_all($sql);
+	}  
+
+	
+	public function update_wedding_img($wedding_id,$wedding_img){
+	$sql="UPDATE `wedding` SET `wedding_img`='$wedding_img' WHERE `wedding_id` = '$wedding_id'";
+	return $this->db_query($sql);
 	}
 
 

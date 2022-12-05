@@ -49,4 +49,21 @@ function deletewedding_ctr($wedding_id){
 
 }
 
+function searchwedding_ctr($wedding_key){
+
+    // Create an instance of the product class. 
+    $selectone= new wedding_class();
+
+    return $selectone->search_wedding($wedding_key);
+
+}
+function updatewedding_img_ctr($wedding_id,$wedding_img){
+
+    // Create an instance of the product class. 
+    $selectone= new wedding_class();
+
+    return $selectone->update_wedding_img($wedding_id,$wedding_img);
+
+}
+
 ?>

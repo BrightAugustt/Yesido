@@ -105,6 +105,7 @@ include("../controllers/shoot_controller.php");
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
+                            <a href="cart.php" class="nav-item nav-link">Cart</a>
                         </div>
                         <a href="index.php" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Logout</a>
                     </div>

@@ -63,12 +63,17 @@ class shoot_class extends db_connection
 	}
 
 		// Cart
-	public function cart_count($shoot_id,$ip){
+		// search
+		public function search_shoots($shoot_key){
+			$sql = "SELECT * FROM `shoots` WHERE `shoot_key` LIKE '%$shoot_key%'";
+			return $this->db_fetch_all($sql);
+		}  
+	
 		
-		// write query
-		$sql="SELECT SUM(`qty`) as `cart_num` FROM `cart` WHERE `shoot_id`='$shoot_id' ";
-		return $this->db_fetch_one($sql);
-	}
+		public function update_shoot_img($shoot_id,$shoot_img){
+		$sql="UPDATE `shoots` SET `shoot_img`='$shoot_img' WHERE `shoot_id` = '$shoot_id'";
+		return $this->db_query($sql);
+		}
 
 
 
