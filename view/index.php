@@ -164,10 +164,10 @@
                 <div class="rounded bg-dark p-5">
                     <ul class="nav nav-pills justify-content-between mb-3">
                         <li class="nav-item w-50">
-                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="#pills-1">About Us</a>
+                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="#pills-1">Wedding Servcie</a>
                         </li>
                         <li class="nav-item w-50">
-                                <a class="nav-link text-uppercase text-center w-100" data-bs-toggle="pill" href="#pills-2">Why Choose Us</a>
+                                <a class="nav-link text-uppercase text-center w-100" data-bs-toggle="pill" href="#pills-2">Product Shoot Service</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -175,7 +175,7 @@
                             <p class="text-secondary mb-0">Born out of passion for celebrating love in unique and stylish ways, The Wedding Agency is a full-service wedding planning company. We believe that every couple deserves a seamless and stress-free wedding so we take up each wedding as if it were our own, giving our clients top notch services and ensuring that they have an unforgettable experience while hosting their guests in a way that will leave a lasting impression.</p>
                         </div>
                         <div class="tab-pane fade" id="pills-2">
-                            <p class="text-secondary mb-0">Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+                            <p class="text-secondary mb-0">Product photography isn’t one size fits all. Just as your ecommerce store likely features a variety of products and services, product photos also come in a variety of styles and purposes.</p>
                         </div>
                     </div>
                 </div>
@@ -184,6 +184,37 @@
     </div>
     <!-- About End -->
 
+        <!-- Programe Start -->
+        <div class="container-fluid programe position-relative px-5 mt-5" style="margin-bottom: 135px;">
+        <div class="row g-5 gb-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="bg-light rounded text-center p-5">
+                    <i class="flaticon-six-pack display-1 text-primary"></i>
+                    <h3 class="text-uppercase my-4">Wedding Events</h3>
+                    <p>Toegther let's create beautiful memories of your wedding</p>
+                    <a class="text-uppercase" href="allwedding.php">Book Service <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="bg-light rounded text-center p-5">
+                    <i class="flaticon-barbell display-1 text-primary"></i>
+                    <h3 class="text-uppercase my-4">Product Shoots</h3>
+                    <p>Give your product that advantage over over brands</p>
+                    <a class="text-uppercase" href="allshoots.php">Book Service <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="bg-light rounded text-center p-5">
+                    <i class="flaticon-bodybuilding display-1 text-primary"></i>
+                    <h3 class="text-uppercase my-4">Model Shoot</h3>
+                    <p>Showcase your creativity in frame</p>
+                    <a class="text-uppercase" href="allshoots.php">Book Service <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Programe Start -->
+    
     <!-- Team Start -->
     <div class="container-fluid p-5">
         <div class="mb-5 text-center">
@@ -246,8 +277,6 @@
     </div>
     <!-- Team End -->
     
-
-    <!-- Testimonial Start -->
     <div class="container-fluid p-0 my-5">
         <div class="row g-0">
             <div class="col-lg-6" style="min-height: 500px;">
@@ -262,21 +291,22 @@
                 </div>
                 <div class="owl-carousel testimonial-carousel">
                     <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Love their work.</p>
+                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Gave my porduct that needed edge</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/ayensu.jpeg" alt="">
+                            <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" alt="">
                             <div class="ps-4">
-                                <h5 class="text-uppercase text-light">Ayensu</h5>
-                                <span class="text-uppercase text-secondary">Profession</span>
+                                <h5 class="text-uppercase text-light">Natsha</h5>
+                                <span class="text-uppercase text-secondary">Brown</span>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-item">Produce magic with efficient work output</p>
+                    <div class="testimonial-item">
+                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Beautiful wedding pictures</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/test1.jpg" alt="">
+                            <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" alt="">
                             <div class="ps-4">
-                                <h5 class="text-uppercase text-light">Client Name</h5>
-                                <span class="text-uppercase text-secondary">Profession</span>
+                                <h5 class="text-uppercase text-light">Albert</h5>
+                                <span class="text-uppercase text-secondary">Augustt</span>
                             </div>
                         </div>
                     </div>
@@ -284,7 +314,7 @@
             </div>
         </div>
     </div>
-    <!-- Testimonial End -->
+   
 
 
     <!-- Blog Start -->

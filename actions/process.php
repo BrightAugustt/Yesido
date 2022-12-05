@@ -26,7 +26,7 @@
   //   echo $response;
   // }
 
-  require('../controllers/product_controller.php');
+  require('../controllers/cart_controller.php');
 session_start();
 $cid = $_SESSION['customer_id'];
 $email =$_POST['email'];
@@ -63,40 +63,67 @@ $invoice =  mt_rand();
 $date = date("Y-m-d");
 
 
-$order = insert_orders_ctr($cid,$invoice,$date);
+$orderw= insert_weddingorders_ctr($cid,$invoice,$date);
+$orders=insert_shootorders_ctr($cid,$invoice,$date);
 
-if ($order == true){
+if ($orderw == true){
     echo"order recordered";
 }else{
     echo"order not recordered";
 }
+if ($orders == true){
+  echo"order recordered";
+}else{
+  echo"order not recordered";
+}
 
-$order_id =get_order_id_ctr();
-$order_date=get_order_date_ctr();
+$order_id =get_weddingorder_id_ctr();
+$idorder =get_shootorder_id_ctr();
+
+$order_date=get_weddingorder_date_ctr();
+$orders_date=get_shootorder_date_ctr();
 
 $or =$order_id['order_id'];
+$sh =$idorder['order_id'];
 $od = $order_date['order_date'];
+$ot=$orders_date['order_date'];
 
-$payment = insert_payment_ctr($amount,$cid,$or,$od);
+$payment = insert_weddingpayment_ctr($amt,$customer_id,$order_id, $payment_date);
+$payments = insert_shootpayment_ctr($amt,$customer_id,$order_id, $payment_date);
 if($payment == true){
     echo "success";
 }else{
     echo"failed";
 }
+if($payments == true){
+  echo "success";
+}else{
+  echo"failed";
+}
 
-$cartd = get_cart_details_ctr($cid);
-$p_id = $cartd['p_id'];
-$qty = $cartd['qty'];
+$cartw = get_cart_weddingdetails_ctr($c_id);
+$carts=get_cart_shootdetails_ctr($c_id);
+$ps_id = $carts['p_id'];
+$p_id = $cartw['p_id'];
+$qty = $cartw['qty'];
+$qtys=$carts['qty'];
 
-$orderdetails = delete_after_pay_ctr($cid);
+$orderdetails = delete_after_weddingpay_ctr($cid);
+$orderdetailss= delete_after_shootpay_ctr($cid);
 
 if ($orderdetails == true){
     echo "order details";
 }else{
     echo "order not working";
 }
+if ($orderdetailss == true){
+  echo "order details";
+}else{
+  echo "order not working";
+}
 
-$delcart = delete_after_pay_ctr($cid);
+$delcart = delete_after_weddingpay_ctr($cid);
+$dels=delete_after_shootpay_ctr($cid);
 if($delcart == true){
 
 }

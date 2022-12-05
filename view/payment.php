@@ -280,10 +280,10 @@ $data = get_weddingorder_id_ctr($_SESSION['customer_id']);
 <form id="paymentForm" method='post'>
             <div class="form-group">
 
-                <input type="email" id="email-address" hidden required value="<?php echo $data['customer_email'] ?>" />
+                <input type="email" id="email" hidden required value="<?php echo $data['customer_email'] ?>" />
             </div>
             <div class="form-group">
-                <input type="number" id="amount" hidden required value="<?php echo $total ?>" />
+                <input type="number" id="amount" hidden required value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>" />
             </div>
             <div class="form-group">
                 <input type="text" id="cname" hidden value="<?php echo $data['customer_name'] ?>" />
