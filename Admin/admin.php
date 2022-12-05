@@ -1,9 +1,8 @@
 <?php
 session_start();
-if (empty($_SESSION['customer_id']) and empty($_SESSION['customer_name']) and empty($_SESSION['customer_email']) and empty($_SESSION['user_role']!= 1) )
-   {
-      header('Location:../Login/login.php');
-   };
+if (empty($_SESSION['customer_id'])  and empty($_SESSION['customer_name'])and   empty($_SESSION['customer_email'])  and empty($_SESSION['user_role']!= 1) ){
+  header('Location:../view/index..php');
+};
 include("../controllers/wedding_controller.php");
 
 ?>
@@ -93,11 +92,10 @@ include("../controllers/wedding_controller.php");
             </li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <?php echo "<li> <a href='../actions/logout.php' onclick='onsignout()' ><i class='dropdown-item'></i> Logout</a> </li>"; ?>
+                <!-- <i class="bi bi-box-arrow-right"></i> -->
+                <?php echo "<li> <a href='../actions/logout.php' onclick='onsignout()' ><i class='fa fa-sign-out'></i> Logout</a> </li>";?>
               </a>
             </li>
-
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
