@@ -7,6 +7,7 @@ session_start();
 $cid = $_SESSION['customer_id'];
 $countwed =count_weddingcart_ctr($cid);
 $countwed =count_shootcart_ctr($cid);
+$data = get_weddingorder_id_ctr($_SESSION['customer_id']);
 ?>
 
 
@@ -41,6 +42,8 @@ $countwed =count_shootcart_ctr($cid);
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
 
 <body>
@@ -231,7 +234,7 @@ $countwed =count_shootcart_ctr($cid);
 				<input readonly class="form-control" value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>" id="amount5" type="number">
 			</div>
 		    </div>								
-			<button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()"  >Proceed Payment</button>
+			<button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()">Proceed Payment</button>
 			</form>
 				</div>
 				<div class="clearfix"></div>
@@ -240,66 +243,62 @@ $countwed =count_shootcart_ctr($cid);
 			</div>
     			
             
-            <script>
-	
-                    const paymentForm = document.getElementById('paymentForm');
-                    paymentForm.addEventListener("submit", payWithPaystack, false);
-                    function payWithPaystack() {
-                    event.preventDefault();
-
-                    let handler = PaystackPop.setup({
-                        key: 'pk_test_057c9db199308fc4166825e8b57cc8510a316319', // Replace with your public key
-                        email: document.getElementById("email").value,
-                        amount: document.getElementById("amount5").value * 100,
-                        ref: ''+Math.floor((Math.random() * 1000000000) + 1),
-                        currency:'GHS',
-
-                        // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-                        // label: "Optional string that replaces customer email"
-                        onClose: function(){
-                        alert('Window closed.');
-                        },
-                        callback: function(response){
-                        
-                        let message = 'Payment complete! Reference: '+ response.reference
-                        
-                        console.log(response.status);
-                        
-                            email = document.getElementById("email").value;
-                            amount5 = document.getElementById("amount5").value;
-                            console.log(email);
-                            console.log(amount5);
-
-                        dataString = 'email='+ email +'&amount5='+amount5+ '&ref=' + response.reference + '&res=' + response.status;
-                    if (response.status=='success') {
-                        $.ajax({
-                            type:"POST",
-                            url:"../actions/process.php",
-                            data: dataString,
-                            cache:false,
-                            success:function(result){
-                            alert(result);
-                            window.location="payment_done.php";
-                            }
+            <script type="text/javascript">
+        function payWithPaystack() {
 
 
-                        });
-                        }
-                    
+            event.preventDefault();
+            let handler = PaystackPop.setup({
+                key: 'pk_test_839cab168cfb81723db8ebef98f189d3bbc66f22',
+                // key: 'pk_test_2f4f689442f4751d03e7f9d680a26a38bba21720', // Replace with your public key
+                email: document.getElementById("email").value,
+                amount: document.getElementById("amount5").value * 100,
+                ref: '' + Math.floor((Math.random() * 1000000000) + 1),
+                currency: 'GHS',
+                // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                // label: "Optional string that replaces customer email"
+                onClose: function() {
+                    alert('Window closed.');
+                },
+                callback: function(response){
+
+                    alert("payment have been made"+ response.reference);
+                    $.ajax({
+                    url:"../actions/process.php?reference="+ response.reference,
+                    method:'GET',
+                    success: function (response){
+                        document.getElementById("stripe-login").submit();
                     }
 
+            });
+    }
+  });
+            handler.openIframe();
+        }
+    </script>
+
+<form id="paymentForm" method='post'>
+            <div class="form-group">
+
+                <input type="email" id="email-address" hidden required value="<?php echo $data['customer_email'] ?>" />
+            </div>
+            <div class="form-group">
+                <input type="number" id="amount" hidden required value="<?php echo $total ?>" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="cname" hidden value="<?php echo $data['customer_name'] ?>" />
+            </div>
+            <div class="form-group">
+                <input type="number" id="cid" hidden value="<?php echo $data['customer_id'] ?>" />
+            </div>
+
+
+            <button type="submit" onclick="payWithPaystack()"> Pay </button>
+
+        </form>
 
 
 
-
-
-                    });
-
-                    handler.openIframe();
-                    }
-
-
-                </script>
 
 
     <!-- Footer Start -->

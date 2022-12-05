@@ -176,7 +176,7 @@ $countwed =count_shootcart_ctr($cid);
           </div>
       </td>
       <td>
-      <form action="../functions/remove_from_cart.php" method="POST">
+      <form action="../actions/remove_wedding_from_cart.php" method="POST">
         <input type="hidden" name="p_id" value="<?php echo($item['wedding_id']);?>" >
         <!-- <button name="deleteCart" ></button> -->
         <input type="submit" name="deleteCart" class='btn btn-outline-danger' value="Delete Order">
@@ -205,7 +205,7 @@ $countwed =count_shootcart_ctr($cid);
           </div>
       </td>
       <td>
-      <form action="../functions/remove_from_cart.php" method="POST">
+      <form action="../actions/remove_shoots_from_cart.php" method="POST">
         <input type="hidden" name="p_id" value="<?php echo($item['shoot_id']);?>" >
         <!-- <button name="deleteCart" ></button> -->
         <input type="submit" name="deleteCart" class='btn btn-outline-danger' value="Delete Order">
