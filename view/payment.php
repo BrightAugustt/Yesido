@@ -227,66 +227,20 @@ $datas = get_shootorder_id_ctr($_SESSION['customer_id']);
     </p>
 
 		<div class="col-md-6">
-
-
-        <form class="cc-form">
+        <form class="cc-form" id="paymentForm">
 			<div class="clearfix">
-			<div class="form-group form-group-cc-number">
-				<label>Email</label>
+				<div class="form-group form-group-cc-number">
+					<label>Email</label>
 					<input class="form-control" id="email" placeholder="example@gmail.com" type="text"><span class="cc-card-icon" value="<?php //echo $total[""]?>" ></span>
 				</div>
 				<div class="form-group form-group-cc-cvc">
 					<label>Total Amount</label>
-					<input readonly class="form-control" value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"] ?>">
-					</div>
-				</div>						
-				<button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()" >Proceed Payment</button>
-		</form>
-			<!-- <form class="cc-form" id="paymentForm">
-			<div class="clearfix">
-			<div class="form-group form-group-cc-number">
-			<label>Email</label>
-			<input class="form-control" id="cname" placeholder="example@gmail.com" type="text" ><span class="cc-card-icon" value="<?php $wed['customer_name']?>" ></span>
-            <input class="form-control" id="cname" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php $wed['customer_name']?>" ></span>
-            <input class="form-control" id="cname" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php $shot['customer_name']?>" ></span>
-			</div>
-            <div class="form-group form-group-cc-number">
-			
-			<input class="form-control" id="email" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php echo $wed['customer_email']?>" ></span>
-            <input class="form-control" id="email" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php echo $shot['customer_email']?>" ></span>
-			</div>
-            <div class="form-group form-group-cc-number">
-			<input class="form-control" id="wid" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php echo $wed['customer_id']?>" ></span>
-            <input class="form-control" id="sid" placeholder="example@gmail.com" type="text" hidden><span class="cc-card-icon" value="<?php echo $shot['customer_id']?>" ></span>
-			</div>
-			<div class="form-group form-group-cc-cvc">
-			    <label>Total Amount</label>
-				<input readonly class="form-control" value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>" id="amount5" type="number">
-			</div>
-		    </div>								
-			<button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()">Proceed Payment</button>
-			</form> -->
-
-            <!-- <form id="paymentForm" method='post'>
-            <div class="form-group">
-
-                <input type="email" id="email" hidden required value="<?php echo $data['customer_email'] ?>" />
-            </div>
-            <div class="form-group">
-                <input type="number" id="amount" hidden required value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]?>" />
-            </div>
-            <div class="form-group">
-                <input type="text" id="cname" hidden value="<?php echo $data['customer_name'] ?>" />
-            </div>
-            <div class="form-group">
-                <input type="number" id="cid" hidden value="<?php echo $data['customer_id'] ?>" />
-            </div>
-
-
-            <button type="submit" onclick="payWithPaystack()"> Pay </button>
-
-        </form> -->
+					<input readonly class="form-control" value="<?php echo $total["SUM(cart.qty*wedding.wedding_price)"] + $shootT["SUM(shootcart.qty*shoots.shoot_price)"]  ?>" id="amount5" type="number">
 				</div>
+				</div>	
+			    <button type="submit" class="btn btn-primary submit" onclick="payWithPaystack()" >Proceed Payment</button>
+		</form>
+		</div>
 				<div class="clearfix"></div>
 				</div>
 				</div>
@@ -294,31 +248,35 @@ $datas = get_shootorder_id_ctr($_SESSION['customer_id']);
     			
             
             <script type="text/javascript">
+                const paymentForm = document.getElementById('paymentForm');
+        paymentForm.addEventListener("submit", payWithPaystack, false);
         function payWithPaystack() {
 
 
             event.preventDefault();
             let handler = PaystackPop.setup({
-                key: 'pk_test_057c9db199308fc4166825e8b57cc8510a316319',
-                // key: 'pk_test_2f4f689442f4751d03e7f9d680a26a38bba21720', // Replace with your public key
+                 key: 'pk_test_8e719889d1e48a17729f97da94a5ac2e7cac9857',
+                
+                // key: 'pk_live_bd5356607a881f3a0d6843b75d3172b74b9675cd',
+               
                 email: document.getElementById("email").value,
-                amount: document.getElementById("amount").value * 100,
+                amount: document.getElementById("amount5").value * 100,
                 ref: '' + Math.floor((Math.random() * 1000000000) + 1),
                 currency: 'GHS',
                 // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
                 // label: "Optional string that replaces customer email"
                 onClose: function() {
-                    alert('Window closed.');
+                    
                 },
                 callback: function(response){
 
-                    alert("payment have been made"+ response.reference);
+
+                    
                     $.ajax({
                     url:"../actions/process.php?reference="+ response.reference,
                     method:'GET',
                     success: function (response){
-                        document.getElementById("stripe-login").submit();
-                        window.location="payment_done.php";
+                        window.location.href="payment_done.php";
                     }
 
             });
